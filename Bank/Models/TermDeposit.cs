@@ -14,12 +14,14 @@ namespace Bank.Models
         (
             int percent,
             decimal value,
+            Customer owner,
             DateTime startDate, 
             DateTime expirationDate
         )
         {
             Percent = percent;
             Value = value;
+            Owner = owner;
             StartDate = startDate;
             ExpirationDate = expirationDate;
         }
