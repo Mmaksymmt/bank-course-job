@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +18,8 @@ namespace Bank.Models
             Customer owner,
             DateTime startDate, 
             DateTime expirationDate
-        )
+        ) : base(percent, value, owner, startDate)
         {
-            Percent = percent;
-            Value = value;
-            Owner = owner;
-            StartDate = startDate;
             ExpirationDate = expirationDate;
         }
 

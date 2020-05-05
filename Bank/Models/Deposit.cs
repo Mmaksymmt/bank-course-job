@@ -28,7 +28,5 @@ namespace Bank.Models
         public decimal Value { set; get; }
         public Customer Owner { set; get; }
         public DateTime StartDate { set; get; }
-
-        protected Deposit() { }
     }
 }

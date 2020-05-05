@@ -1,6 +1,7 @@
 ﻿using Bank.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,11 +18,15 @@ namespace Bank
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            
 
             MyBank bank = new MyBank();
-            bank.FillTestData(10);
-            bank.Save();
+            //bank.FillTestData(10);
+            //bank.Save();
+            bank.Load();
+            Console.WriteLine(bank.Deposits[0].StartDate);
+
+            Application.Run(new Form1());
         }
     }
 }
