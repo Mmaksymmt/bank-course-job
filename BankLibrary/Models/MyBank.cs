@@ -13,7 +13,7 @@ namespace Bank.Models
 {
     // 
     [Serializable]
-    class MyBank
+    public class MyBank
     {
         public MyBank()
         {

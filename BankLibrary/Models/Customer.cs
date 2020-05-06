@@ -1,5 +1,4 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -10,7 +9,7 @@ namespace Bank.Models
 {
     // Customer = login + password + passport data + deposits
     [Serializable]
-    class Customer
+    public class Customer
     {
         public Customer(
             string login,

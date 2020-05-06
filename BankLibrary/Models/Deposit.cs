@@ -8,7 +8,7 @@ namespace Bank.Models
 {
     // 
     [Serializable]
-    class Deposit
+    public class Deposit
     {
         public Deposit
         (

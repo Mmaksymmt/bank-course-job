@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Bank.Models
+namespace AdminApp
 {
     static class Program
     {
@@ -17,14 +16,6 @@ namespace Bank.Models
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-
-            MyBank bank = new MyBank();
-            //bank.FillTestData(10);
-            //bank.Save();
-            bank.Load();
-            Console.WriteLine(bank.Deposits[0].StartDate);
-
             Application.Run(new Form1());
         }
     }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Bank.Models
 {
-    // 
+    // Deposit + ExpirationDate
     [Serializable]
-    class TermDeposit : Deposit
+    public class TermDeposit : Deposit
     {
         public TermDeposit
         (
