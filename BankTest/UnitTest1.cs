@@ -19,5 +19,40 @@ namespace BankTest
                 Assert.AreEqual($"login{i}", bank.Customers[i].Login);
             }
         }
+
+        [TestMethod]
+        public void Charge()
+        {
+            Deposit deposit1 = new Deposit(
+                10, 1000, "User", Deposit.AccrualsInterval.minute, DateTime.Now.AddMinutes(0)
+            );
+            deposit1.Charge();
+            Assert.AreEqual(1000, deposit1.Value);
+            Deposit deposit2 = new Deposit(
+                10, 1000, "User", Deposit.AccrualsInterval.month, DateTime.Now.AddMonths(-2)
+            );
+            deposit2.Charge();
+            Assert.AreEqual(1210, deposit2.Value);
+        }
+
+        [TestMethod]
+        public void Put()
+        {
+            Deposit deposit = new Deposit(
+                10, 1000, "User", Deposit.AccrualsInterval.minute, DateTime.Now.AddMinutes(0)
+            );
+            deposit.Put(100.50m);
+            Assert.AreEqual(1100.50m, deposit.Value);
+        }
+
+        [TestMethod]
+        public void Withdraw()
+        {
+            Deposit deposit = new Deposit(
+                10, 1000, "User", Deposit.AccrualsInterval.minute, DateTime.Now.AddMinutes(0)
+            );
+            deposit.Withdraw(999.50m);
+            Assert.AreEqual(0.50m, deposit.Value);
+        }
     }
 }

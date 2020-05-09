@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
-//using System.Windows.Forms;
 
 namespace Bank.DAL
 {
@@ -65,22 +64,12 @@ namespace Bank.DAL
 
             for (int i = 0; i < n; i++)
             {
-                if (i % 2 == 0)
-                {
-                    Bank.Deposits.Add
-                    (
-                        new Deposit(5, 500.50m, Bank.Customers[i], DateTime.Now)
-                    );
-                }
-                else
-                {
-                    DateTime expiration = DateTime.Now;
-                    expiration = expiration.AddMonths(i);
-                    Bank.Deposits.Add
-                    (
-                        new TermDeposit(5, 500.50m, Bank.Customers[i], DateTime.Now, expiration)
-                    );
-                }
+                Bank.Deposits.Add
+                 (
+                     new Deposit(
+                         5, 500.50m, $"Customer{i}", Deposit.AccrualsInterval.minute, DateTime.Now
+                     )
+                 );
             }
         }
 

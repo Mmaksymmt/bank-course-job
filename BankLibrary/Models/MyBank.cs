@@ -43,5 +43,3 @@ namespace Bank.Models
         public List<Deposit> Deposits { private set; get; }
     }
 }
-
-// TODO: Serialization
