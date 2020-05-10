@@ -31,11 +31,11 @@ namespace BankTest
             Deposit deposit2 = new Deposit(
                 10, 1000, "User", Deposit.AccrualsInterval.minute, DateTime.Now.AddMinutes(-2.5)
             );
-            Assert.IsTrue(deposit2.lastAccrual == deposit2.StartDate);
+            Assert.IsTrue(deposit2.LastAccrual == deposit2.StartDate);
             deposit2.Charge();
             Assert.AreEqual(1210, deposit2.Value);
-            Assert.IsTrue(deposit2.lastAccrual != deposit2.StartDate
-                && deposit2.lastAccrual <= DateTime.Now);
+            Assert.IsTrue(deposit2.LastAccrual != deposit2.StartDate
+                && deposit2.LastAccrual <= DateTime.Now);
         }
 
         [TestMethod]

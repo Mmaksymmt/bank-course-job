@@ -17,7 +17,7 @@ namespace AdminApp
         {
             InitializeComponent();
             Bank = new MyBank();
-            Bank.FillTestData(3);
+            //Bank.FillTestData(3);
             CustomersBindingSource.DataSource = Bank.Customers;
             UsersList.DisplayMember = "Login";
         }
@@ -63,9 +63,14 @@ namespace AdminApp
             Customer toDelete = UsersList.SelectedItem as Customer;
             if (toDelete != null)
             {
-                MessageBox.Show($"Удалить {toDelete.Login}?");
-                Bank.RemoveCustomer(toDelete);
-                CustomersBindingSource.ResetBindings(false);
+                DialogResult res = MessageBox.Show(
+                    $"Удалить {toDelete.Login}?", "Подтверждение", MessageBoxButtons.OKCancel
+                );
+                if (res == DialogResult.OK)
+                {
+                    Bank.RemoveCustomer(toDelete);
+                    CustomersBindingSource.ResetBindings(false);
+                }
             }
         }
 
@@ -76,7 +81,7 @@ namespace AdminApp
             {
                 DepositsBindingSource.DataSource = selectedCustomer.Deposits;
                 DepositsBindingSource.ResetBindings(false);
-                DepositsList.DisplayMember = "Owner";
+                DepositsList.DisplayMember = "Info";
             }
             else
             {
@@ -90,10 +95,22 @@ namespace AdminApp
             Deposit selectedDeposit = DepositsList.SelectedItem as Deposit;
             if (selectedDeposit != null)
             {
-                MessageBox.Show("Удалить депозит?");
-                Bank.RemoveDeposit(selectedCustomer, selectedDeposit);
-                DepositsBindingSource.ResetBindings(false);
+                DialogResult res = MessageBox.Show(
+                    "Удалить депозит?", "Подтверждение", MessageBoxButtons.OKCancel
+                );
+                if (res == DialogResult.OK)
+                {
+                    Bank.RemoveDeposit(selectedCustomer, selectedDeposit);
+                    DepositsBindingSource.ResetBindings(false);
+                }
             }
+        }
+
+        private void UploadAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bank.Charge();
+            CustomersBindingSource.ResetBindings(false);
+            DepositsBindingSource.ResetBindings(false);
         }
     }
 }

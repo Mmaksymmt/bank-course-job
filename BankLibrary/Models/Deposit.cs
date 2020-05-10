@@ -23,27 +23,27 @@ namespace Bank.Models
             Percent = percent;
             Value = value;
             Owner = owner;
-            interval = interv;
+            Interval = interv;
             if (startDate == DateTime.MinValue)
             {
                 startDate = DateTime.Now;
             }
             StartDate = startDate;
-            lastAccrual = startDate;
+            LastAccrual = startDate;
         }
 
         public Deposit(int percent, decimal value, string owner, AccrualsInterval interv)
             : this(percent, value, owner, interv, DateTime.MinValue)
         {
-        }       
+        }
 
         public void Charge()
         {
-            DateTime last = lastAccrual;
+            DateTime last = LastAccrual;
             DateTime next = last;
             while (true)
             {
-                switch (interval)
+                switch (Interval)
                 {
                     case AccrualsInterval.minute:
                         next = last.AddMinutes(1);
@@ -57,14 +57,38 @@ namespace Bank.Models
                 }
                 if (next <= DateTime.Now)
                 {
-                    Value += Value * Percent / 100;
+                    decimal bonus = Value * Percent / 100;
+                    bonus = Math.Round(bonus, 2);
+                    Value += bonus;
                     last = next;
                 }
                 else
                 {
-                    lastAccrual = last;
+                    LastAccrual = last;
                     break;
                 }
+            }
+        }
+
+        public string Info
+        {
+            get
+            {
+                string intervl = "";
+                switch (Interval)
+                {
+                    case AccrualsInterval.minute:
+                        intervl = "мин.";
+                        break;
+                    case AccrualsInterval.month:
+                        intervl = "мес.";
+                        break;
+                    case AccrualsInterval.year:
+                        intervl = "год.";
+                        break;
+                }
+                return Percent + "%" + intervl + "; Сумма: " + Value
+                    + "грн.; Дата открытия: " + StartDate;
             }
         }
 
@@ -91,7 +115,7 @@ namespace Bank.Models
         public decimal Value { set; get; }
         public string Owner { set; get; }
         public DateTime StartDate { set; get; }
-        public DateTime lastAccrual { get; private set; }
-        public AccrualsInterval interval { get; private set; }
+        public DateTime LastAccrual { get; private set; }
+        public AccrualsInterval Interval { get; private set; }
     }
 }

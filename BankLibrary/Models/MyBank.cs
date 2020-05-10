@@ -30,6 +30,7 @@ namespace Bank.Models
         {
             Dao dao = new Dao(this);
             dao.Load();
+            Charge();
         }
 
         public void RemoveCustomer(Customer customer)
@@ -46,6 +47,17 @@ namespace Bank.Models
         {
             Dao dao = new Dao(this);
             dao.FillTestData(n);
+        }
+
+        public void Charge()
+        {
+            foreach (Customer cust in Customers)
+            {
+                foreach (Deposit dep in cust.Deposits)
+                {
+                    dep.Charge();
+                }
+            }
         }
 
         public List<Customer> Customers { private set; get; }
