@@ -91,7 +91,7 @@ namespace Bank.Models
         public decimal Value { set; get; }
         public string Owner { set; get; }
         public DateTime StartDate { set; get; }
-        public AccrualsInterval interval;
-        private DateTime lastAccrual;
+        public DateTime lastAccrual { get; private set; }
+        public AccrualsInterval interval { get; private set; }
     }
 }

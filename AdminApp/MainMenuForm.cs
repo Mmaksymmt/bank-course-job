@@ -36,5 +36,23 @@ namespace AdminApp
         {
             Bank.Save();
         }
+
+        private void MainMenuForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult res = MessageBox.Show(
+                "Сохранить данные перед закрытием?", "Выход", MessageBoxButtons.YesNoCancel
+            );
+            switch (res)
+            {
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+                case DialogResult.OK:
+                    Bank.Save();
+                    break;
+                case DialogResult.No:
+                    break;
+            }
+        }
     }
 }
