@@ -18,7 +18,6 @@ namespace Bank.Models
         public MyBank()
         {
             Customers = new List<Customer>();
-            Deposits = new List<Deposit>();
         }
 
         public void Save()
@@ -33,6 +32,16 @@ namespace Bank.Models
             dao.Load();
         }
 
+        public void RemoveCustomer(Customer customer)
+        {
+            Customers.Remove(customer);
+        }
+
+        public void RemoveDeposit(Customer customer, Deposit deposit)
+        {
+            customer.Deposits.Remove(deposit);
+        }
+
         public void FillTestData(int n)
         {
             Dao dao = new Dao(this);
@@ -40,6 +49,5 @@ namespace Bank.Models
         }
 
         public List<Customer> Customers { private set; get; }
-        public List<Deposit> Deposits { private set; get; }
     }
 }

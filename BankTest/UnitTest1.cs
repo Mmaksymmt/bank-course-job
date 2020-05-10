@@ -15,7 +15,7 @@ namespace BankTest
             bank.FillTestData(TEST_VALUE);
             for (int i = 0; i < TEST_VALUE; i++)
             {
-                Assert.AreEqual(500.50m, bank.Deposits[i].Value);
+                Assert.AreEqual(500.50m, bank.Customers[i].Deposits[0].Value);
                 Assert.AreEqual($"login{i}", bank.Customers[i].Login);
             }
         }

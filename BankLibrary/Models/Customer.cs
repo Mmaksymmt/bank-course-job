@@ -30,6 +30,7 @@ namespace Bank.Models
             BirthYear = bYear;
             BirthMonth = bMonth;
             BirthDay = bDay;
+            Deposits = new List<Deposit>();
         }
 
         public string Login { get; set; }
@@ -40,5 +41,6 @@ namespace Bank.Models
         public int BirthYear { get; set; }
         public int BirthMonth { get; set; }
         public int BirthDay { get; set; }
+        public List<Deposit> Deposits { get; private set; }
     }
 }

@@ -17,19 +17,22 @@ namespace AdminApp
         {
             InitializeComponent();
             Bank = new MyBank();
+            Bank.FillTestData(3);
+            CustomersBindingSource.DataSource = Bank.Customers;
+            UsersList.DisplayMember = "Login";
         }
 
         private MyBank Bank;
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
             Close();
         }
 
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bank.Load();
+            CustomersBindingSource.ResetBindings(false);
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,6 +55,44 @@ namespace AdminApp
                     break;
                 case DialogResult.No:
                     break;
+            }
+        }
+
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Customer toDelete = UsersList.SelectedItem as Customer;
+            if (toDelete != null)
+            {
+                MessageBox.Show($"Удалить {toDelete.Login}?");
+                Bank.RemoveCustomer(toDelete);
+                CustomersBindingSource.ResetBindings(false);
+            }
+        }
+
+        private void UsersList_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Customer selectedCustomer = UsersList.SelectedItem as Customer;
+            if (selectedCustomer != null)
+            {
+                DepositsBindingSource.DataSource = selectedCustomer.Deposits;
+                DepositsBindingSource.ResetBindings(false);
+                DepositsList.DisplayMember = "Owner";
+            }
+            else
+            {
+                DepositsBindingSource.DataSource = new List<int>();
+            }
+        }
+
+        private void DeleteDepositToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Customer selectedCustomer = UsersList.SelectedItem as Customer;
+            Deposit selectedDeposit = DepositsList.SelectedItem as Deposit;
+            if (selectedDeposit != null)
+            {
+                MessageBox.Show("Удалить депозит?");
+                Bank.RemoveDeposit(selectedCustomer, selectedDeposit);
+                DepositsBindingSource.ResetBindings(false);
             }
         }
     }

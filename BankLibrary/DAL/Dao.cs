@@ -32,7 +32,6 @@ namespace Bank.DAL
                 BinaryFormatter serializer = new BinaryFormatter();
                 MyBank tmp = (MyBank)serializer.Deserialize(stream);
                 Copy(tmp.Customers, Bank.Customers);
-                Copy(tmp.Deposits, Bank.Deposits);
             }
 
             void Copy<T>(List<T> from, List<T> to)
@@ -60,16 +59,20 @@ namespace Bank.DAL
                         i % 31 + 1
                     )
                 );
-            }
 
-            for (int i = 0; i < n; i++)
-            {
-                Bank.Deposits.Add
-                 (
-                     new Deposit(
-                         5, 500.50m, $"Customer{i}", Deposit.AccrualsInterval.minute, DateTime.Now
-                     )
-                 );
+                for (int j = 0; j < 4; j++)
+                {
+                    Bank.Customers[i].Deposits.Add
+                     (
+                         new Deposit(
+                             5 + j,
+                             500.50m * j,
+                             $"Customer{i}",
+                             Deposit.AccrualsInterval.minute,
+                             DateTime.Now
+                         )
+                     );
+                }
             }
         }
 
