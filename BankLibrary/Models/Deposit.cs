@@ -15,28 +15,89 @@ namespace Bank.Models
         (
             int percent,
             decimal value,
-            string owner,
             AccrualsInterval interv,
-            DateTime startDate
+            int periods
         )
         {
             Percent = percent;
             Value = value;
-            Owner = owner;
+            Interval = interv;
+            StartDate = DateTime.Now;
+            LastAccrual = StartDate;
+            switch (interv)
+            {
+                case AccrualsInterval.minute:
+                    FinishDate = StartDate.AddMinutes(periods);
+                    break;
+                case AccrualsInterval.month:
+                    FinishDate = StartDate.AddMonths(periods);
+                    break;
+                case AccrualsInterval.year:
+                    FinishDate = StartDate.AddYears(periods);
+                    break;
+            }
+        }
+
+        public Deposit(
+            int percent,
+            decimal value,
+            AccrualsInterval interv,
+            DateTime startDate,
+            DateTime finishDate
+        )
+        {
+            Percent = percent;
+            Value = value;
             Interval = interv;
             if (startDate == DateTime.MinValue)
             {
                 startDate = DateTime.Now;
             }
+            if (finishDate == DateTime.MaxValue)
+            {
+                finishDate = startDate.AddMonths(12);
+            }
             StartDate = startDate;
             LastAccrual = startDate;
+            FinishDate = finishDate;
         }
 
-        public Deposit(int percent, decimal value, string owner, AccrualsInterval interv)
-            : this(percent, value, owner, interv, DateTime.MinValue)
+        public int Percent { set; get; }
+        public decimal Value { set; get; }
+        public DateTime StartDate { set; get; }
+        public DateTime FinishDate { set; get; }
+        public DateTime LastAccrual { get; private set; }
+        public AccrualsInterval Interval { get; private set; }
+        // String, displayed on Deposits list
+        public string InfoString
         {
+            get
+            {
+                string intervl = "";
+                switch (Interval)
+                {
+                    case AccrualsInterval.minute:
+                        intervl = "мин.";
+                        break;
+                    case AccrualsInterval.month:
+                        intervl = "мес.";
+                        break;
+                    case AccrualsInterval.year:
+                        intervl = "год.";
+                        break;
+                }
+                string info = "";
+                if (FinishDate < DateTime.Now)
+                {
+                    info = "ЗАВЕРШ. ";
+                }
+                return info + Percent + "%" + intervl + "; Сумма: " + Value
+                    + "грн.; Дата открытия: " + StartDate
+                    + "; Дата окончания: " + FinishDate;
+            }
         }
 
+        // Calculate and add %
         public void Charge()
         {
             DateTime last = LastAccrual;
@@ -55,7 +116,7 @@ namespace Bank.Models
                         next = last.AddYears(1);
                         break;
                 }
-                if (next <= DateTime.Now)
+                if (next <= DateTime.Now && next <= FinishDate)
                 {
                     decimal bonus = Value * Percent / 100;
                     bonus = Math.Round(bonus, 2);
@@ -70,28 +131,7 @@ namespace Bank.Models
             }
         }
 
-        public string Info
-        {
-            get
-            {
-                string intervl = "";
-                switch (Interval)
-                {
-                    case AccrualsInterval.minute:
-                        intervl = "мин.";
-                        break;
-                    case AccrualsInterval.month:
-                        intervl = "мес.";
-                        break;
-                    case AccrualsInterval.year:
-                        intervl = "год.";
-                        break;
-                }
-                return Percent + "%" + intervl + "; Сумма: " + Value
-                    + "грн.; Дата открытия: " + StartDate;
-            }
-        }
-
+        // + Money
         public void Put(decimal value)
         {
             if (value < 0)
@@ -101,6 +141,7 @@ namespace Bank.Models
             Value += value;
         }
 
+        // - Money
         public void Withdraw(decimal value)
         {
             if (value < 0 || value > Value)
@@ -110,12 +151,43 @@ namespace Bank.Models
             Value -= value;
         }
 
-        public enum AccrualsInterval { minute, month, year };
-        public int Percent { set; get; }
-        public decimal Value { set; get; }
-        public string Owner { set; get; }
-        public DateTime StartDate { set; get; }
-        public DateTime LastAccrual { get; private set; }
-        public AccrualsInterval Interval { get; private set; }
+        public void Change(
+            int percent,
+            decimal value,
+            AccrualsInterval interv,
+            DateTime startDate,
+            DateTime finishDate
+        )
+        {
+            CheckData(percent, value, interv, startDate, finishDate);
+
+            // if no exceptions - change deposit data
+
+            Percent = percent;
+            Value = value;
+            Interval = interv;
+            StartDate = startDate;
+            FinishDate = finishDate;
+        }
+
+        public static void CheckData(
+            int percent,
+            decimal value,
+            AccrualsInterval interv,
+            DateTime startDate,
+            DateTime finishDate
+        )
+        {
+            if (value <= 0)
+            {
+                throw new Exception("Сумма не может быть меньше или равна нулю!");
+            }
+            if (finishDate <= startDate)
+            {
+                throw new Exception("Неправильная дата окончания!");
+            }
+        }
     }
+
+    public enum AccrualsInterval { minute, month, year };
 }

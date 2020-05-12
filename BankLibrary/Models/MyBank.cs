@@ -15,6 +15,8 @@ namespace Bank.Models
     [Serializable]
     public class MyBank
     {
+        public List<Customer> Customers { private set; get; }
+
         public MyBank()
         {
             Customers = new List<Customer>();
@@ -59,7 +61,5 @@ namespace Bank.Models
                 }
             }
         }
-
-        public List<Customer> Customers { private set; get; }
     }
 }

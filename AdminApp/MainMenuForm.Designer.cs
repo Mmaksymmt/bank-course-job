@@ -31,26 +31,34 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.клиентToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customerInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.депозитToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UsersList = new System.Windows.Forms.ListBox();
-            this.CustomersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DepositsList = new System.Windows.Forms.ListBox();
-            this.DepositsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.UsersListLabel = new System.Windows.Forms.Label();
-            this.DepositsListLabel = new System.Windows.Forms.Label();
-            this.UploadAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uploadAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usersList = new System.Windows.Forms.ListBox();
+            this.CustomersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.depositsList = new System.Windows.Forms.ListBox();
+            this.DepositsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersListLabel = new System.Windows.Forms.Label();
+            this.depositsListLabel = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepositsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -63,78 +71,112 @@
             this.помощьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LoadToolStripMenuItem,
-            this.SaveToolStripMenuItem,
+            this.loadToolStripMenuItem,
+            this.saveToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.ExitToolStripMenuItem});
+            this.exitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
-            // LoadToolStripMenuItem
+            // loadToolStripMenuItem
             // 
-            this.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem";
-            this.LoadToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.LoadToolStripMenuItem.Text = "Загрузить";
-            this.LoadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.loadToolStripMenuItem.Text = "Загрузить";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
-            // SaveToolStripMenuItem
+            // saveToolStripMenuItem
             // 
-            this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.SaveToolStripMenuItem.Text = "Сохранить";
-            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.saveToolStripMenuItem.Text = "Сохранить";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(130, 6);
             // 
-            // ExitToolStripMenuItem
+            // exitToolStripMenuItem
             // 
-            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.ExitToolStripMenuItem.Text = "Выход";
-            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exitToolStripMenuItem.Text = "Выход";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // клиентToolStripMenuItem
             // 
             this.клиентToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DeleteToolStripMenuItem});
+            this.customerInfoToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.deleteToolStripMenuItem});
             this.клиентToolStripMenuItem.Name = "клиентToolStripMenuItem";
             this.клиентToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.клиентToolStripMenuItem.Text = "Клиент";
             // 
-            // DeleteToolStripMenuItem
+            // customerInfoToolStripMenuItem
             // 
-            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.DeleteToolStripMenuItem.Text = "Удалить";
-            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
+            this.customerInfoToolStripMenuItem.Name = "customerInfoToolStripMenuItem";
+            this.customerInfoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.customerInfoToolStripMenuItem.Text = "Информация";
+            this.customerInfoToolStripMenuItem.Click += new System.EventHandler(this.CustomerInfoToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(145, 6);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.deleteToolStripMenuItem.Text = "Удалить";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // депозитToolStripMenuItem
             // 
             this.депозитToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.UploadAllToolStripMenuItem,
+            this.uploadAllToolStripMenuItem,
+            this.editDepositToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.DeleteDepositToolStripMenuItem});
+            this.deleteDepositToolStripMenuItem});
             this.депозитToolStripMenuItem.Name = "депозитToolStripMenuItem";
             this.депозитToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.депозитToolStripMenuItem.Text = "Депозит";
             // 
-            // DeleteDepositToolStripMenuItem
+            // uploadAllToolStripMenuItem
             // 
-            this.DeleteDepositToolStripMenuItem.Name = "DeleteDepositToolStripMenuItem";
-            this.DeleteDepositToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.DeleteDepositToolStripMenuItem.Text = "Удалить";
-            this.DeleteDepositToolStripMenuItem.Click += new System.EventHandler(this.DeleteDepositToolStripMenuItem_Click);
+            this.uploadAllToolStripMenuItem.Name = "uploadAllToolStripMenuItem";
+            this.uploadAllToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.uploadAllToolStripMenuItem.Text = "Обновить все";
+            this.uploadAllToolStripMenuItem.Click += new System.EventHandler(this.UploadAllToolStripMenuItem_Click);
+            // 
+            // editDepositToolStripMenuItem
+            // 
+            this.editDepositToolStripMenuItem.Name = "editDepositToolStripMenuItem";
+            this.editDepositToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.editDepositToolStripMenuItem.Text = "Редактировать";
+            this.editDepositToolStripMenuItem.Click += new System.EventHandler(this.EditDepositToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(151, 6);
+            // 
+            // deleteDepositToolStripMenuItem
+            // 
+            this.deleteDepositToolStripMenuItem.Name = "deleteDepositToolStripMenuItem";
+            this.deleteDepositToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.deleteDepositToolStripMenuItem.Text = "Удалить";
+            this.deleteDepositToolStripMenuItem.Click += new System.EventHandler(this.DeleteDepositToolStripMenuItem_Click);
             // 
             // помощьToolStripMenuItem
             // 
@@ -142,79 +184,84 @@
             this.помощьToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.помощьToolStripMenuItem.Text = "Помощь";
             // 
-            // UsersList
+            // usersList
             // 
-            this.UsersList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.UsersList.DataSource = this.CustomersBindingSource;
-            this.UsersList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UsersList.FormattingEnabled = true;
-            this.UsersList.ItemHeight = 16;
-            this.UsersList.Location = new System.Drawing.Point(12, 60);
-            this.UsersList.Name = "UsersList";
-            this.UsersList.Size = new System.Drawing.Size(280, 452);
-            this.UsersList.TabIndex = 1;
-            this.UsersList.SelectedValueChanged += new System.EventHandler(this.UsersList_SelectedValueChanged);
-            // 
-            // DepositsList
-            // 
-            this.DepositsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.usersList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DepositsList.DataSource = this.DepositsBindingSource;
-            this.DepositsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DepositsList.FormattingEnabled = true;
-            this.DepositsList.ItemHeight = 16;
-            this.DepositsList.Location = new System.Drawing.Point(298, 60);
-            this.DepositsList.Name = "DepositsList";
-            this.DepositsList.Size = new System.Drawing.Size(474, 452);
-            this.DepositsList.TabIndex = 2;
+            this.usersList.DataSource = this.CustomersBindingSource;
+            this.usersList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.usersList.FormattingEnabled = true;
+            this.usersList.ItemHeight = 16;
+            this.usersList.Location = new System.Drawing.Point(3, 35);
+            this.usersList.Name = "usersList";
+            this.usersList.Size = new System.Drawing.Size(324, 500);
+            this.usersList.TabIndex = 1;
+            this.usersList.SelectedValueChanged += new System.EventHandler(this.UsersList_SelectedValueChanged);
             // 
-            // UsersListLabel
+            // depositsList
             // 
-            this.UsersListLabel.AutoSize = true;
-            this.UsersListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UsersListLabel.Location = new System.Drawing.Point(12, 35);
-            this.UsersListLabel.Name = "UsersListLabel";
-            this.UsersListLabel.Size = new System.Drawing.Size(71, 16);
-            this.UsersListLabel.TabIndex = 3;
-            this.UsersListLabel.Text = "Клиенты";
+            this.depositsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.depositsList.DataSource = this.DepositsBindingSource;
+            this.depositsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.depositsList.FormattingEnabled = true;
+            this.depositsList.ItemHeight = 16;
+            this.depositsList.Location = new System.Drawing.Point(-1, 37);
+            this.depositsList.Name = "depositsList";
+            this.depositsList.Size = new System.Drawing.Size(548, 500);
+            this.depositsList.TabIndex = 2;
             // 
-            // DepositsListLabel
+            // usersListLabel
             // 
-            this.DepositsListLabel.AutoSize = true;
-            this.DepositsListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DepositsListLabel.Location = new System.Drawing.Point(295, 35);
-            this.DepositsListLabel.Name = "DepositsListLabel";
-            this.DepositsListLabel.Size = new System.Drawing.Size(81, 16);
-            this.DepositsListLabel.TabIndex = 4;
-            this.DepositsListLabel.Text = "Депозиты";
+            this.usersListLabel.AutoSize = true;
+            this.usersListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.usersListLabel.Location = new System.Drawing.Point(3, 13);
+            this.usersListLabel.Name = "usersListLabel";
+            this.usersListLabel.Size = new System.Drawing.Size(71, 16);
+            this.usersListLabel.TabIndex = 3;
+            this.usersListLabel.Text = "Клиенты";
             // 
-            // UploadAllToolStripMenuItem
+            // depositsListLabel
             // 
-            this.UploadAllToolStripMenuItem.Name = "UploadAllToolStripMenuItem";
-            this.UploadAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.UploadAllToolStripMenuItem.Text = "Обновить все";
-            this.UploadAllToolStripMenuItem.Click += new System.EventHandler(this.UploadAllToolStripMenuItem_Click);
+            this.depositsListLabel.AutoSize = true;
+            this.depositsListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.depositsListLabel.Location = new System.Drawing.Point(3, 13);
+            this.depositsListLabel.Name = "depositsListLabel";
+            this.depositsListLabel.Size = new System.Drawing.Size(81, 16);
+            this.depositsListLabel.TabIndex = 4;
+            this.depositsListLabel.Text = "Депозиты";
             // 
-            // toolStripMenuItem2
+            // splitContainer1
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.usersList);
+            this.splitContainer1.Panel1.Controls.Add(this.usersListLabel);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.depositsList);
+            this.splitContainer1.Panel2.Controls.Add(this.depositsListLabel);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 537);
+            this.splitContainer1.SplitterDistance = 330;
+            this.splitContainer1.TabIndex = 5;
             // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.DepositsListLabel);
-            this.Controls.Add(this.UsersListLabel);
-            this.Controls.Add(this.DepositsList);
-            this.Controls.Add(this.UsersList);
+            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "MainMenuForm";
             this.Text = "Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenuForm_FormClosing);
@@ -222,6 +269,12 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepositsBindingSource)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,23 +284,27 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem LoadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
-        private System.Windows.Forms.ListBox UsersList;
+        private System.Windows.Forms.ListBox usersList;
         private System.Windows.Forms.ToolStripMenuItem клиентToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.BindingSource CustomersBindingSource;
-        private System.Windows.Forms.ListBox DepositsList;
-        private System.Windows.Forms.Label UsersListLabel;
-        private System.Windows.Forms.Label DepositsListLabel;
+        private System.Windows.Forms.ListBox depositsList;
+        private System.Windows.Forms.Label usersListLabel;
+        private System.Windows.Forms.Label depositsListLabel;
         private System.Windows.Forms.BindingSource DepositsBindingSource;
         private System.Windows.Forms.ToolStripMenuItem депозитToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DeleteDepositToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem UploadAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteDepositToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uploadAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem customerInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem editDepositToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 

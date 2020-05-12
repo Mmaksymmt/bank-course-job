@@ -15,7 +15,7 @@ namespace BankTest
             bank.FillTestData(TEST_VALUE);
             for (int i = 0; i < TEST_VALUE; i++)
             {
-                Assert.AreEqual(500.50m, bank.Customers[i].Deposits[0].Value);
+                Assert.AreEqual(500.50m, bank.Customers[i].Deposits[1].Value);
                 Assert.AreEqual($"login{i}", bank.Customers[i].Login);
             }
         }
@@ -24,12 +24,20 @@ namespace BankTest
         public void Charge()
         {
             Deposit deposit1 = new Deposit(
-                10, 1000, "User", Deposit.AccrualsInterval.month, DateTime.Now.AddMonths(0)
+                10,
+                1000,
+                AccrualsInterval.month,
+                DateTime.Now.AddMonths(0),
+                DateTime.Now.AddMonths(1)
             );
             deposit1.Charge();
             Assert.AreEqual(1000, deposit1.Value);
             Deposit deposit2 = new Deposit(
-                10, 1000, "User", Deposit.AccrualsInterval.minute, DateTime.Now.AddMinutes(-2.5)
+                10,
+                1000,
+                AccrualsInterval.minute,
+                DateTime.Now.AddMinutes(-2.5),
+                DateTime.Now.AddMinutes(10)
             );
             Assert.IsTrue(deposit2.LastAccrual == deposit2.StartDate);
             deposit2.Charge();
@@ -42,7 +50,7 @@ namespace BankTest
         public void Put()
         {
             Deposit deposit = new Deposit(
-                10, 1000, "User", Deposit.AccrualsInterval.minute, DateTime.Now.AddMinutes(0)
+                10, 1000, AccrualsInterval.minute, 10
             );
             deposit.Put(100.50m);
             Assert.AreEqual(1100.50m, deposit.Value);
@@ -52,7 +60,7 @@ namespace BankTest
         public void Withdraw()
         {
             Deposit deposit = new Deposit(
-                10, 1000, "User", Deposit.AccrualsInterval.minute, DateTime.Now.AddMinutes(0)
+                10, 1000, AccrualsInterval.minute, 10
             );
             deposit.Withdraw(999.50m);
             Assert.AreEqual(0.50m, deposit.Value);

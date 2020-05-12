@@ -11,6 +11,10 @@ namespace Bank.DAL
 {
     class Dao
     {
+        private readonly MyBank Bank;
+        [NonSerialized] private const string FILE_PATH = "BankData.bin";
+
+
         public Dao(MyBank bank)
         {
             Bank = bank;
@@ -51,12 +55,10 @@ namespace Bank.DAL
                     (
                         $"login{i}",
                         $"password{i}",
-                        $"name{i}",
-                        (uint)i,
+                        $"Жмышенко Валерий Альбертович",
+                        i.ToString(),
                         $"address{i}",
-                        1900 + i,
-                        i % 12 + 1,
-                        i % 31 + 1
+                        new DateTime(1900, 1, 1).AddDays(i)
                     )
                 );
 
@@ -67,16 +69,11 @@ namespace Bank.DAL
                          new Deposit(
                              5 + j,
                              500.50m * j,
-                             $"Customer{i}",
-                             Deposit.AccrualsInterval.minute,
-                             DateTime.Now
+                             AccrualsInterval.minute, j % 10 + 10
                          )
                      );
                 }
             }
         }
-
-        private readonly MyBank Bank;
-        [NonSerialized] private const string FILE_PATH = "BankData.bin";
     }
 }

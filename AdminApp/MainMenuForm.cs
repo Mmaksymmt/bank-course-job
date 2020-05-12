@@ -13,16 +13,16 @@ namespace AdminApp
 {
     public partial class MainMenuForm : Form
     {
+        private MyBank Bank;
+
         public MainMenuForm()
         {
             InitializeComponent();
             Bank = new MyBank();
-            //Bank.FillTestData(3);
+            Bank.FillTestData(10000);
             CustomersBindingSource.DataSource = Bank.Customers;
-            UsersList.DisplayMember = "Login";
+            usersList.DisplayMember = "InfoString";
         }
-
-        private MyBank Bank;
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -60,7 +60,7 @@ namespace AdminApp
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Customer toDelete = UsersList.SelectedItem as Customer;
+            Customer toDelete = usersList.SelectedItem as Customer;
             if (toDelete != null)
             {
                 DialogResult res = MessageBox.Show(
@@ -76,12 +76,12 @@ namespace AdminApp
 
         private void UsersList_SelectedValueChanged(object sender, EventArgs e)
         {
-            Customer selectedCustomer = UsersList.SelectedItem as Customer;
+            Customer selectedCustomer = usersList.SelectedItem as Customer;
             if (selectedCustomer != null)
             {
                 DepositsBindingSource.DataSource = selectedCustomer.Deposits;
                 DepositsBindingSource.ResetBindings(false);
-                DepositsList.DisplayMember = "Info";
+                depositsList.DisplayMember = "InfoString";
             }
             else
             {
@@ -91,8 +91,8 @@ namespace AdminApp
 
         private void DeleteDepositToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Customer selectedCustomer = UsersList.SelectedItem as Customer;
-            Deposit selectedDeposit = DepositsList.SelectedItem as Deposit;
+            Customer selectedCustomer = usersList.SelectedItem as Customer;
+            Deposit selectedDeposit = depositsList.SelectedItem as Deposit;
             if (selectedDeposit != null)
             {
                 DialogResult res = MessageBox.Show(
@@ -111,6 +111,30 @@ namespace AdminApp
             Bank.Charge();
             CustomersBindingSource.ResetBindings(false);
             DepositsBindingSource.ResetBindings(false);
+        }
+
+        private void CustomerInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Customer selectedCustomer = usersList.SelectedItem as Customer;
+            if (selectedCustomer != null)
+            {
+                var customerInfoForm = new CustomerInfoForm(selectedCustomer);
+                customerInfoForm.ShowDialog();
+                CustomersBindingSource.ResetBindings(false);
+            }
+        }
+
+        private void EditDepositToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Deposit selectedDeposit = depositsList.SelectedItem as Deposit;
+            if (selectedDeposit != null)
+            {
+                var depositEditingForm = new DepositEditingForm(
+                    usersList.SelectedItem as Customer, selectedDeposit
+                );
+                depositEditingForm.ShowDialog();
+                DepositsBindingSource.ResetBindings(false);
+            }
         }
     }
 }
