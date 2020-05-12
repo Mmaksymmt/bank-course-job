@@ -16,10 +16,12 @@ namespace Bank.Models
     public class MyBank
     {
         public List<Customer> Customers { private set; get; }
+        [NonSerialized] private readonly Admin admin;
 
         public MyBank()
         {
             Customers = new List<Customer>();
+            admin = new Admin("admin", "0000");
         }
 
         public void Save()
@@ -60,6 +62,11 @@ namespace Bank.Models
                     dep.Charge();
                 }
             }
+        }
+
+        public bool LogInAsAdmin(string login, string password)
+        {
+            return (login == admin.Login && password == admin.Password);
         }
     }
 }

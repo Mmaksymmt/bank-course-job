@@ -15,10 +15,10 @@ namespace AdminApp
     {
         private MyBank Bank;
 
-        public MainMenuForm()
+        public MainMenuForm(MyBank bank)
         {
+            Bank = bank;
             InitializeComponent();
-            Bank = new MyBank();
             Bank.FillTestData(10000);
             CustomersBindingSource.DataSource = Bank.Customers;
             usersList.DisplayMember = "InfoString";
