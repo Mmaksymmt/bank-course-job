@@ -19,9 +19,8 @@ namespace AdminApp
         {
             Bank = bank;
             InitializeComponent();
-            Bank.FillTestData(10000);
-            CustomersBindingSource.DataSource = Bank.Customers;
-            usersList.DisplayMember = "InfoString";
+            Bank.FillTestData(10);
+            CustomersBindingSource.DataSource = Bank.Customers;            
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -60,7 +59,13 @@ namespace AdminApp
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Customer toDelete = usersList.SelectedItem as Customer;
+            if (usersGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            Customer toDelete
+                = usersGridView.SelectedRows[0].DataBoundItem as Customer;
             if (toDelete != null)
             {
                 DialogResult res = MessageBox.Show(
@@ -74,25 +79,34 @@ namespace AdminApp
             }
         }
 
-        private void UsersList_SelectedValueChanged(object sender, EventArgs e)
+        private void UsersGridView_SelectedValueChanged(object sender, EventArgs e)
         {
-            Customer selectedCustomer = usersList.SelectedItem as Customer;
+            if (usersGridView.SelectedRows.Count == 0)
+            {
+                DepositsBindingSource.DataSource = new List<int>();
+                return;
+            }
+
+            Customer selectedCustomer
+                = usersGridView.SelectedRows[0].DataBoundItem as Customer;
             if (selectedCustomer != null)
             {
                 DepositsBindingSource.DataSource = selectedCustomer.Deposits;
                 DepositsBindingSource.ResetBindings(false);
-                depositsList.DisplayMember = "InfoString";
-            }
-            else
-            {
-                DepositsBindingSource.DataSource = new List<int>();
             }
         }
 
         private void DeleteDepositToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Customer selectedCustomer = usersList.SelectedItem as Customer;
-            Deposit selectedDeposit = depositsList.SelectedItem as Deposit;
+            if (depositsGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            Customer selectedCustomer
+                = usersGridView.SelectedRows[0].DataBoundItem as Customer;
+            Deposit selectedDeposit =
+                depositsGridView.SelectedRows[0].DataBoundItem as Deposit;
             if (selectedDeposit != null)
             {
                 DialogResult res = MessageBox.Show(
@@ -109,13 +123,19 @@ namespace AdminApp
         private void UploadAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bank.Charge();
-            CustomersBindingSource.ResetBindings(false);
+            //CustomersBindingSource.ResetBindings(false);
             DepositsBindingSource.ResetBindings(false);
         }
 
         private void CustomerInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Customer selectedCustomer = usersList.SelectedItem as Customer;
+            if (usersGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            Customer selectedCustomer
+                = usersGridView.SelectedRows[0].DataBoundItem as Customer;
             if (selectedCustomer != null)
             {
                 var customerInfoForm = new CustomerInfoForm(selectedCustomer);
@@ -126,14 +146,44 @@ namespace AdminApp
 
         private void EditDepositToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Deposit selectedDeposit = depositsList.SelectedItem as Deposit;
+            if (depositsGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            Deposit selectedDeposit
+                = depositsGridView.SelectedRows[0].DataBoundItem as Deposit;
             if (selectedDeposit != null)
             {
                 var depositEditingForm = new DepositEditingForm(
-                    usersList.SelectedItem as Customer, selectedDeposit
+                    usersGridView.SelectedRows[0].DataBoundItem as Customer,
+                    selectedDeposit
                 );
                 depositEditingForm.ShowDialog();
                 DepositsBindingSource.ResetBindings(false);
+            }
+        }
+
+        private void depositsGridView_CellFormatting(
+            object sender,
+            DataGridViewCellFormattingEventArgs e
+        )
+        {
+            var row = depositsGridView[e.ColumnIndex, e.RowIndex].OwningRow;
+            var deposit = row.DataBoundItem as Deposit;
+            if (deposit.FinishDate < DateTime.Now)
+            {
+                row.DefaultCellStyle.BackColor = Color.LightPink;
+                row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 128);
+                row.DefaultCellStyle.SelectionForeColor = SystemColors.ControlText;
+            }
+            else
+            {
+                row.DefaultCellStyle.BackColor = depositsGridView.DefaultCellStyle.BackColor;
+                row.DefaultCellStyle.SelectionBackColor
+                    = depositsGridView.DefaultCellStyle.SelectionBackColor;
+                row.DefaultCellStyle.SelectionForeColor
+                    = depositsGridView.DefaultCellStyle.SelectionForeColor;
             }
         }
     }

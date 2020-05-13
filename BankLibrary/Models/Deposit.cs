@@ -68,34 +68,6 @@ namespace Bank.Models
         public DateTime FinishDate { set; get; }
         public DateTime LastAccrual { get; private set; }
         public AccrualsInterval Interval { get; private set; }
-        // String, displayed on Deposits list
-        public string InfoString
-        {
-            get
-            {
-                string intervl = "";
-                switch (Interval)
-                {
-                    case AccrualsInterval.minute:
-                        intervl = "мин.";
-                        break;
-                    case AccrualsInterval.month:
-                        intervl = "мес.";
-                        break;
-                    case AccrualsInterval.year:
-                        intervl = "год.";
-                        break;
-                }
-                string info = "";
-                if (FinishDate < DateTime.Now)
-                {
-                    info = "ЗАВЕРШ. ";
-                }
-                return info + Percent + "%" + intervl + "; Сумма: " + Value
-                    + "грн.; Дата открытия: " + StartDate
-                    + "; Дата окончания: " + FinishDate;
-            }
-        }
 
         // Calculate and add %
         public void Charge()

@@ -68,5 +68,17 @@ namespace Bank.Models
         {
             return (login == admin.Login && password == admin.Password);
         }
+
+        public Customer Find(string login)
+        {
+            foreach (Customer account in Customers)
+            {
+                if (account.Login == login)
+                {
+                    return account;
+                }
+            }
+            return null;
+        }
     }
 }

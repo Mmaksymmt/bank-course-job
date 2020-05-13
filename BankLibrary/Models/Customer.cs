@@ -51,14 +51,6 @@ namespace Bank.Models
         }
         public string Address { get; set; }
         public DateTime BirthDate { get; set; }
-        // String, displayed on Customers list
-        public string InfoString
-        {
-            get
-            {
-                return Login + "   (" + FullName + ")";
-            }
-        }
 
         public void Change(
             string login,
