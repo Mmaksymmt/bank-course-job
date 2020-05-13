@@ -54,7 +54,7 @@ namespace AdminApp
                     newFinishDate
                 );
             }
-            catch (Exception e)
+            catch (InputException e)
             {
                 MessageBox.Show(e.Message, "", MessageBoxButtons.OK);
                 return false;

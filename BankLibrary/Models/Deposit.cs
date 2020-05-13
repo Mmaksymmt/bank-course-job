@@ -108,7 +108,7 @@ namespace Bank.Models
         {
             if (value < 0)
             {
-                throw new Exception("Value can not be less than 0");
+                throw new InputException("Value can not be less than 0");
             }
             Value += value;
         }
@@ -118,7 +118,7 @@ namespace Bank.Models
         {
             if (value < 0 || value > Value)
             {
-                throw new Exception("Value can not be less than 0 or more than current account");
+                throw new InputException("Value can not be less than 0 or more than current account");
             }
             Value -= value;
         }
@@ -152,11 +152,11 @@ namespace Bank.Models
         {
             if (value <= 0)
             {
-                throw new Exception("Сумма не может быть меньше или равна нулю!");
+                throw new InputException("Сумма не может быть меньше или равна нулю!");
             }
             if (finishDate <= startDate)
             {
-                throw new Exception("Неправильная дата окончания!");
+                throw new InputException("Неправильная дата окончания!");
             }
         }
     }

@@ -37,6 +37,11 @@ namespace Bank.Models
             Charge();
         }
 
+        public void Register(Customer customer)
+        {
+            Customers.Add(customer);
+        }
+
         public void RemoveCustomer(Customer customer)
         {
             Customers.Remove(customer);
@@ -80,5 +85,11 @@ namespace Bank.Models
             }
             return null;
         }
+    }
+
+    public class InputException : Exception
+    {
+        public InputException(string message) : base(message)
+        { }
     }
 }

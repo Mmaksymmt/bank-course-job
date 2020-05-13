@@ -14,12 +14,14 @@ namespace AdminApp
     public partial class CustomerInfoForm : Form
     {
         Customer customer;
+        MyBank bank;
         private bool isInputChanged;
 
-        public CustomerInfoForm(Customer customer)
+        public CustomerInfoForm(Customer customer, MyBank bank)
         {
             InitializeComponent();
             this.customer = customer;
+            this.bank = bank;
             Fill();
             isInputChanged = false;
             saveButton.Enabled = false;
@@ -39,16 +41,23 @@ namespace AdminApp
         {
             try
             {
+                if (bank.Find(loginTextBox.Text) != null
+                    && loginTextBox.Text != customer.Login)
+                {
+                    throw new InputException("Этот логин уже занят!");
+                }
                 customer.Change(
-                    loginTextBox.Text,
-                    customer.Password,
-                    fullNameTextBox.Text,
-                    accNumberTextBox.Text,
-                    addressTextBox.Text,
-                    birthDateTimePicker.Value
+                    new Customer(
+                        loginTextBox.Text,
+                        customer.Password,
+                        fullNameTextBox.Text,
+                        accNumberTextBox.Text,
+                        addressTextBox.Text,
+                        birthDateTimePicker.Value
+                    )
                 );
             }
-            catch (Exception e)
+            catch (InputException e)
             {
                 MessageBox.Show(e.Message, "", MessageBoxButtons.OK);
                 return false;

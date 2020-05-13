@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14DC747C-97DF-4445-ACDC-986C9CA36002}</ProjectGuid>
+    <ProjectGuid>{C60DF0CD-83CA-4821-9492-7DC2E2CF8FBA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AdminApp</RootNamespace>
-    <AssemblyName>AdminApp</AssemblyName>
+    <RootNamespace>CustomerApp</RootNamespace>
+    <AssemblyName>CustomerApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,9 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,18 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerInfoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomerInfoForm.Designer.cs">
-      <DependentUpon>CustomerInfoForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DepositEditingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DepositEditingForm.Designer.cs">
-      <DependentUpon>DepositEditingForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,17 +60,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CustomerInfoForm.resx">
-      <DependentUpon>CustomerInfoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DepositEditingForm.resx">
-      <DependentUpon>DepositEditingForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterForm.Designer.cs">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainMenuForm.resx">
-      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,8 +77,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RegisterForm.resx">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -115,12 +99,6 @@
       <Project>{ba6d3134-b29b-4baf-8872-c8e8351ca32e}</Project>
       <Name>BankLibrary</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="images\user_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="images\deposit_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

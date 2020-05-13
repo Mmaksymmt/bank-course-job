@@ -90,9 +90,19 @@
             // percentUpDown
             // 
             this.percentUpDown.Location = new System.Drawing.Point(191, 52);
+            this.percentUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.percentUpDown.Name = "percentUpDown";
             this.percentUpDown.Size = new System.Drawing.Size(95, 22);
             this.percentUpDown.TabIndex = 4;
+            this.percentUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.percentUpDown.ValueChanged += new System.EventHandler(this.InputsValueChanged);
             // 
             // saveButton

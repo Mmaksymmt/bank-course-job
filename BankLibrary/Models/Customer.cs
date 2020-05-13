@@ -52,83 +52,74 @@ namespace Bank.Models
         public string Address { get; set; }
         public DateTime BirthDate { get; set; }
 
-        public void Change(
-            string login,
-            string password,
-            string fullName,
-            string accountNumber,
-            string address,
-            DateTime birthDate
-        )
+        public void Copy(Customer source)
         {
-            CheckData(login, password, fullName, accountNumber, address, birthDate);
+            Login = source.Login;
+            Password = source.Password;
+            FullName = source.FullName;
+            AccountNumber = source.AccountNumber;
+            Address = source.Address;
+            BirthDate = source.BirthDate;
+        }
+
+        public void Change(Customer data)
+        {
+            data.CheckData();
 
             // If no exceptions - change customer data
 
-            Login = login;
-            Password = password;
-            FullName = fullName;
-            AccountNumber = accountNumber.ToString();
-            Address = address;
-            BirthDate = birthDate;
+            Copy(data);
         }
 
-        private static void CheckData(
-            string login,
-            string password,
-            string fullName,
-            string accountNumber,
-            string address,
-            DateTime birthDate
-        )
+        public void CheckData()
         {
             // Check login
-            if (login.Length == 0)
+            if (Login.Length == 0)
             {
-                throw new Exception("Логин не может быть пустым!");
+                throw new InputException("Логин не может быть пустым!");
             }
-            for (int i = 0; i < login.Length; i++)
+            for (int i = 0; i < Login.Length; i++)
             {
-                if (char.IsWhiteSpace(login[i]))
+                if (char.IsWhiteSpace(Login[i]))
                 {
-                    throw new Exception("Логин не может содержать пробелов!");
+                    throw new InputException("Логин не может содержать пробелов!");
                 }
             }
 
             // Check password
 
-            if (password.Length < PASSWORD_MIN_LENGTH)
+            if (Password.Length < PASSWORD_MIN_LENGTH)
             {
-                throw new Exception("Пароль должен быть не меньше 6 символов!");
+                throw new InputException("Пароль должен быть не меньше 6 символов!");
             }
 
             // Check full name
 
-            if (fullName.Length == 0)
+            if (FullName.Length == 0)
             {
-                throw new Exception("Имя не может быть пустым!");
+                throw new InputException("Имя не может быть пустым!");
             }
-            for (int i = 0; i < fullName.Length; i++)
+            for (int i = 0; i < FullName.Length; i++)
             {
-                char ch = fullName[i];
+                char ch = FullName[i];
                 if (!char.IsLetter(ch) && !char.IsWhiteSpace(ch))
                 {
-                    throw new Exception("Имя может содержать только буквы!");
+                    throw new InputException("Имя может содержать только буквы!");
                 }
             }
 
             // Check account number
 
-            if (accountNumber.Length > ACCOUNT_NUMBER_LENGTH)
+            if (AccountNumber.Length > ACCOUNT_NUMBER_LENGTH)
             {
-                throw new Exception("Неправильный номер счета!");
+                throw new InputException("Неправильный номер счета!");
             }
 
             // Check birth date
 
-            if (birthDate >= DateTime.Now)
+            if (BirthDate >= DateTime.Now)
             {
-                throw new Exception("Неправильная дата!");
+                throw new InputException("Неправильная дата!");
             }
         }
     }
