@@ -17,11 +17,14 @@ namespace CustomerApp
     {
         MyBank bank;
 
-        public LoginForm()
+        public LoginForm(MyBank bank)
         {
             InitializeComponent();
-            bank = new MyBank();
-            bank.Load();
+            this.bank = bank;
+        }
+
+        public LoginForm() : this(new MyBank())
+        {
         }
 
         private void logInButton_Click(object sender, EventArgs e)
@@ -29,6 +32,7 @@ namespace CustomerApp
             string login = loginTextBox.Text;
             string password = passwordTextBox.Text;
             Customer customer = bank.Find(login);
+            Console.WriteLine(bank.Customers.Count);
 
             if (customer == null || customer.Password != password)
             {

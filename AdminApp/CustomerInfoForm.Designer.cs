@@ -139,7 +139,7 @@
             // 
             this.birthDateTimePicker.Location = new System.Drawing.Point(125, 175);
             this.birthDateTimePicker.Name = "birthDateTimePicker";
-            this.birthDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.birthDateTimePicker.Size = new System.Drawing.Size(233, 22);
             this.birthDateTimePicker.TabIndex = 10;
             this.birthDateTimePicker.ValueChanged += new System.EventHandler(this.InputChanged);
             // 

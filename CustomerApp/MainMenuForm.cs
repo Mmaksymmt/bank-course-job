@@ -63,7 +63,7 @@ namespace CustomerApp
             }
             if (isLogOut)
             {
-                Program.context.MainForm = new LoginForm();
+                Program.context.MainForm = new LoginForm(bank);
                 Program.context.MainForm.Show();
             }
         }

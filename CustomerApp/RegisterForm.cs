@@ -24,7 +24,7 @@ namespace CustomerApp
 
         private void returnButton_Click(object sender, EventArgs e)
         {
-            Program.context.MainForm = new LoginForm();
+            Program.context.MainForm = new LoginForm(bank);
             Close();
             Program.context.MainForm.Show();
         }

@@ -12,13 +12,13 @@ namespace Bank.DAL
 {
     class Dao
     {
-        private readonly MyBank Bank;
+        private readonly MyBank bank;
         [NonSerialized] private const string FILE_PATH = "BankData.bin";
 
 
         public Dao(MyBank bank)
         {
-            Bank = bank;
+            this.bank = bank;
         }
 
         public void Save()
@@ -26,7 +26,7 @@ namespace Bank.DAL
             using (Stream stream = File.Create(FILE_PATH))
             {
                 BinaryFormatter serializer = new BinaryFormatter();
-                serializer.Serialize(stream, Bank);
+                serializer.Serialize(stream, bank);
             }
         }
 
@@ -36,7 +36,8 @@ namespace Bank.DAL
             {
                 BinaryFormatter serializer = new BinaryFormatter();
                 MyBank tmp = (MyBank)serializer.Deserialize(stream);
-                Copy(tmp.Customers, Bank.Customers);
+                Copy(tmp.Customers, bank.Customers);
+                Copy(tmp.DepositConditions, bank.DepositConditions);
             }
 
             void Copy<T>(List<T> from, List<T> to)
@@ -50,7 +51,7 @@ namespace Bank.DAL
         {
             for (int i = 0; i < n; i++)
             {
-                Bank.Customers.Add
+                bank.Customers.Add
                 (
                     new Customer
                     (
@@ -65,7 +66,7 @@ namespace Bank.DAL
 
                 for (int j = 0; j < 4; j++)
                 {
-                    Bank.Customers[i].Deposits.Add
+                    bank.Customers[i].Deposits.Add
                      (
                          new Deposit(
                              5 + j,
@@ -75,7 +76,7 @@ namespace Bank.DAL
                      );
                 }
 
-                Bank.DepositConditions.Add(
+                bank.DepositConditions.Add(
                     new DepositCondition(
                         i + 1,
                         (AccrualsInterval)(i % 3),

@@ -152,6 +152,7 @@
             // 
             // finishDatePicker
             // 
+            this.finishDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.finishDatePicker.Location = new System.Drawing.Point(222, 164);
             this.finishDatePicker.Name = "finishDatePicker";
             this.finishDatePicker.Size = new System.Drawing.Size(200, 22);

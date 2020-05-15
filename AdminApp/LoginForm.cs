@@ -15,10 +15,14 @@ namespace AdminApp
     public partial class LoginForm : Form
     {
         private MyBank bank;
-        public LoginForm()
+        public LoginForm(MyBank bank)
         {
             InitializeComponent();
-            bank = new MyBank();
+            this.bank = bank;
+        }
+
+        public LoginForm() : this(new MyBank())
+        {
         }
 
         private void LogIn()
