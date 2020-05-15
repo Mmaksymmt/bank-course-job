@@ -32,7 +32,6 @@ namespace CustomerApp
             string login = loginTextBox.Text;
             string password = passwordTextBox.Text;
             Customer customer = bank.Find(login);
-            Console.WriteLine(bank.Customers.Count);
 
             if (customer == null || customer.Password != password)
             {

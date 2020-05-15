@@ -49,12 +49,7 @@ namespace AdminApp
                 }
             }
 
-            if (context == null)
-            {
-                context = new ApplicationContext(new LoginForm(bank));
-            }
-
-            context = new ApplicationContext(new LoginForm());
+            context = new ApplicationContext(new LoginForm(bank));
             Application.Run(context);
         }
     }

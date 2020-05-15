@@ -40,7 +40,7 @@ namespace CustomerApp
                 switch (res)
                 {
                     case DialogResult.Yes:
-                        bank.FillTestData(10);
+                        //bank.FillTestData(10);
                         bank.Save();
                         Program.context = new ApplicationContext(new RegisterForm(bank));
                         break;

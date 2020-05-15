@@ -19,7 +19,7 @@ namespace AdminApp
         {
             Bank = bank;
             InitializeComponent();
-            Bank.FillTestData(10);
+            //Bank.FillTestData(10);
             CustomersBindingSource.DataSource = Bank.Customers;            
         }
 
