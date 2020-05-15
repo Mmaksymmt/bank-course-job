@@ -32,7 +32,7 @@ namespace CustomerApp
 
             if (customer == null || customer.Password != password)
             {
-                MessageBox.Show("Не верные данные." +
+                MessageBox.Show("Не верные данные. " +
                     "Попробуйте снова или создайте новый аккаунт");
                 return;
             }

@@ -73,7 +73,7 @@ namespace AdminApp
                 );
                 if (res == DialogResult.OK)
                 {
-                    Bank.RemoveCustomer(toDelete);
+                    Bank.Customers.Remove(toDelete);
                     CustomersBindingSource.ResetBindings(false);
                 }
             }
@@ -114,7 +114,7 @@ namespace AdminApp
                 );
                 if (res == DialogResult.OK)
                 {
-                    Bank.RemoveDeposit(selectedCustomer, selectedDeposit);
+                    selectedCustomer.Deposits.Remove(selectedDeposit);
                     DepositsBindingSource.ResetBindings(false);
                 }
             }
@@ -185,6 +185,12 @@ namespace AdminApp
                 row.DefaultCellStyle.SelectionForeColor
                     = depositsGridView.DefaultCellStyle.SelectionForeColor;
             }
+        }
+
+        private void availableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var conditionsForm = new DepositConditionsForm(Bank);
+            conditionsForm.Show();
         }
     }
 }

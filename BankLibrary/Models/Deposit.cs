@@ -106,9 +106,9 @@ namespace Bank.Models
         // + Money
         public void Put(decimal value)
         {
-            if (value < 0)
+            if (value <= 0)
             {
-                throw new InputException("Value can not be less than 0");
+                throw new InputException("Value can not 0 or less");
             }
             Value += value;
         }
@@ -116,9 +116,11 @@ namespace Bank.Models
         // - Money
         public void Withdraw(decimal value)
         {
-            if (value < 0 || value > Value)
+            if (value <= 0 || value > Value)
             {
-                throw new InputException("Value can not be less than 0 or more than current account");
+                throw new InputException(
+                    "Value can not be less than 0 or more than current account"
+                );
             }
             Value -= value;
         }

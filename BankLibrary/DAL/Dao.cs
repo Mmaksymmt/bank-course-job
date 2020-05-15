@@ -1,4 +1,5 @@
 ﻿using Bank.Models;
+using BankLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -73,6 +74,14 @@ namespace Bank.DAL
                          )
                      );
                 }
+
+                Bank.DepositConditions.Add(
+                    new DepositCondition(
+                        i + 1,
+                        (AccrualsInterval)(i % 3),
+                        i + 2
+                    )
+                );
             }
         }
     }

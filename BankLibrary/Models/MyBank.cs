@@ -1,4 +1,5 @@
 ﻿using Bank.DAL;
+using BankLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -16,11 +17,13 @@ namespace Bank.Models
     public class MyBank
     {
         public List<Customer> Customers { private set; get; }
+        public List<DepositCondition> DepositConditions { private set; get; }
         [NonSerialized] private readonly Admin admin;
 
         public MyBank()
         {
             Customers = new List<Customer>();
+            DepositConditions = new List<DepositCondition>();
             admin = new Admin("admin", "0000");
         }
 
@@ -35,21 +38,6 @@ namespace Bank.Models
             Dao dao = new Dao(this);
             dao.Load();
             Charge();
-        }
-
-        public void Register(Customer customer)
-        {
-            Customers.Add(customer);
-        }
-
-        public void RemoveCustomer(Customer customer)
-        {
-            Customers.Remove(customer);
-        }
-
-        public void RemoveDeposit(Customer customer, Deposit deposit)
-        {
-            customer.Deposits.Remove(deposit);
         }
 
         public void FillTestData(int n)

@@ -65,7 +65,7 @@
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordLabel.Location = new System.Drawing.Point(57, 118);
+            this.passwordLabel.Location = new System.Drawing.Point(57, 119);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(63, 16);
             this.passwordLabel.TabIndex = 6;
@@ -96,13 +96,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 311);
+            this.ClientSize = new System.Drawing.Size(372, 311);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.logInButton);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.loginTextBox);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.loginLabel);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(388, 350);
+            this.MinimumSize = new System.Drawing.Size(388, 350);
             this.Name = "LoginForm";
             this.Text = "Form1";
             this.ResumeLayout(false);

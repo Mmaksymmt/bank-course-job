@@ -49,11 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConditionEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConditionEditingForm.Designer.cs">
+      <DependentUpon>ConditionEditingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomerInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CustomerInfoForm.Designer.cs">
       <DependentUpon>CustomerInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepositConditionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepositConditionsForm.Designer.cs">
+      <DependentUpon>DepositConditionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DepositEditingForm.cs">
       <SubType>Form</SubType>
@@ -75,8 +87,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConditionEditingForm.resx">
+      <DependentUpon>ConditionEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerInfoForm.resx">
       <DependentUpon>CustomerInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepositConditionsForm.resx">
+      <DependentUpon>DepositConditionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DepositEditingForm.resx">
       <DependentUpon>DepositEditingForm.cs</DependentUpon>

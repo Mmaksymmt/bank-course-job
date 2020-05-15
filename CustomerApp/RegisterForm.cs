@@ -56,7 +56,7 @@ namespace CustomerApp
 
             // If no exceptions - register and login
 
-            bank.Register(customer);
+            bank.Customers.Add(customer);
             Program.context.MainForm = new MainMenuForm(bank, customer);
             Close();
             Program.context.MainForm.Show();
