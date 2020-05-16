@@ -17,22 +17,11 @@ namespace CommonForms
         private MyBank bank;
         private bool isInputChanged;
 
-        public CustomerInfoForm(Customer customer, MyBank bank, bool isAdmin)
+        public CustomerInfoForm(Customer customer, MyBank bank)
         {
             InitializeComponent();
             this.customer = customer;
             this.bank = bank;
-            
-            if (isAdmin)
-            {
-                passwordLabel.Visible = false;
-                passwordTextBox.Visible = false;
-            }
-            else
-            {
-                loginLabel.Visible = false;
-                loginTextBox.Visible = false;
-            }
 
             Fill();
             isInputChanged = false;

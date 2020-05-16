@@ -55,6 +55,12 @@
     <Compile Include="ConditionEditingForm.Designer.cs">
       <DependentUpon>ConditionEditingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerInfoFormAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerInfoFormAdmin.Designer.cs">
+      <DependentUpon>CustomerInfoFormAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="DepositConditionsForm.cs">
       <SubType>Form</SubType>
     </Compile>

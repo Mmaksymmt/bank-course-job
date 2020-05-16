@@ -223,8 +223,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox userIconBox;
-        private System.Windows.Forms.Label loginLabel;
-        private System.Windows.Forms.TextBox loginTextBox;
         private System.Windows.Forms.Label fullNameLabel;
         private System.Windows.Forms.TextBox fullNameTextBox;
         private System.Windows.Forms.Label accountNumberLabel;
@@ -235,7 +233,9 @@
         private System.Windows.Forms.DateTimePicker birthDateTimePicker;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button ReturnButton;
-        private System.Windows.Forms.Label passwordLabel;
-        private System.Windows.Forms.TextBox passwordTextBox;
+        protected System.Windows.Forms.Label loginLabel;
+        protected System.Windows.Forms.TextBox loginTextBox;
+        protected System.Windows.Forms.Label passwordLabel;
+        protected System.Windows.Forms.TextBox passwordTextBox;
     }
 }

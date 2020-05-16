@@ -112,7 +112,7 @@ namespace CustomerApp
 
         private void PrivateDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var customerEditForm = new CustomerInfoForm(currentCustomer, bank, false);
+            var customerEditForm = new CustomerInfoFormCustomer(currentCustomer, bank);
             customerEditForm.ShowDialog();
             welcomeLabel.Text = "Добро пожаловать, " + currentCustomer.FullName + "!";
         }

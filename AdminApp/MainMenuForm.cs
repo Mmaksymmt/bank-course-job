@@ -140,7 +140,7 @@ namespace AdminApp
                 = usersGridView.SelectedRows[0].DataBoundItem as Customer;
             if (selectedCustomer != null)
             {
-                var customerInfoForm = new CustomerInfoForm(selectedCustomer, bank, true);
+                var customerInfoForm = new CustomerInfoFormAdmin(selectedCustomer, bank);
                 customerInfoForm.ShowDialog();
                 CustomersBindingSource.ResetBindings(false);
             }
