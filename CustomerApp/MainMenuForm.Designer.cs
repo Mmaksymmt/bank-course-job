@@ -37,8 +37,15 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.privateDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.depositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uploadAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.addDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.withdrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.putToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.depositsLabel = new System.Windows.Forms.Label();
@@ -49,13 +56,6 @@
             this.startDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finishDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depositsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.addDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.withdrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.putToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uploadAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.privateDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.depositsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.depositsBindingSource)).BeginInit();
@@ -90,26 +90,27 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.saveToolStripMenuItem.Text = "Сохранить";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.loadToolStripMenuItem.Text = "Загрузить";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.exitToolStripMenuItem.Text = "Выйти";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -123,10 +124,22 @@
             this.myAccountToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.myAccountToolStripMenuItem.Text = "Мой аккаунт";
             // 
+            // privateDataToolStripMenuItem
+            // 
+            this.privateDataToolStripMenuItem.Name = "privateDataToolStripMenuItem";
+            this.privateDataToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.privateDataToolStripMenuItem.Text = "Личные данные";
+            this.privateDataToolStripMenuItem.Click += new System.EventHandler(this.PrivateDataToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(172, 6);
+            // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.logoutToolStripMenuItem.Text = "Выйти из аккаунта";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
@@ -141,6 +154,40 @@
             this.depositToolStripMenuItem.Name = "depositToolStripMenuItem";
             this.depositToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.depositToolStripMenuItem.Text = "Депозит";
+            // 
+            // uploadAllToolStripMenuItem
+            // 
+            this.uploadAllToolStripMenuItem.Name = "uploadAllToolStripMenuItem";
+            this.uploadAllToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.uploadAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uploadAllToolStripMenuItem.Text = "Обновить все";
+            this.uploadAllToolStripMenuItem.Click += new System.EventHandler(this.UploadAllToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            // 
+            // addDepositToolStripMenuItem
+            // 
+            this.addDepositToolStripMenuItem.Name = "addDepositToolStripMenuItem";
+            this.addDepositToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addDepositToolStripMenuItem.Text = "Создать новый";
+            this.addDepositToolStripMenuItem.Click += new System.EventHandler(this.AddDepositToolStripMenuItem_Click);
+            // 
+            // withdrawToolStripMenuItem
+            // 
+            this.withdrawToolStripMenuItem.Name = "withdrawToolStripMenuItem";
+            this.withdrawToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.withdrawToolStripMenuItem.Text = "Снять сумму";
+            this.withdrawToolStripMenuItem.Click += new System.EventHandler(this.WithdrawToolStripMenuItem_Click);
+            // 
+            // putToolStripMenuItem
+            // 
+            this.putToolStripMenuItem.Name = "putToolStripMenuItem";
+            this.putToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.putToolStripMenuItem.Text = "Положить сумму";
+            this.putToolStripMenuItem.Click += new System.EventHandler(this.PutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -196,7 +243,7 @@
             this.depositsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.depositsGridView.Size = new System.Drawing.Size(636, 335);
             this.depositsGridView.TabIndex = 6;
-            this.depositsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.depositsGridView_CellFormatting);
+            this.depositsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DepositsGridView_CellFormatting);
             // 
             // percentColumn
             // 
@@ -243,48 +290,6 @@
             this.finishDateColumn.Name = "finishDateColumn";
             this.finishDateColumn.ReadOnly = true;
             // 
-            // addDepositToolStripMenuItem
-            // 
-            this.addDepositToolStripMenuItem.Name = "addDepositToolStripMenuItem";
-            this.addDepositToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addDepositToolStripMenuItem.Text = "Создать новый";
-            // 
-            // withdrawToolStripMenuItem
-            // 
-            this.withdrawToolStripMenuItem.Name = "withdrawToolStripMenuItem";
-            this.withdrawToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.withdrawToolStripMenuItem.Text = "Снять сумму";
-            // 
-            // putToolStripMenuItem
-            // 
-            this.putToolStripMenuItem.Name = "putToolStripMenuItem";
-            this.putToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.putToolStripMenuItem.Text = "Положить сумму";
-            // 
-            // uploadAllToolStripMenuItem
-            // 
-            this.uploadAllToolStripMenuItem.Name = "uploadAllToolStripMenuItem";
-            this.uploadAllToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.uploadAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.uploadAllToolStripMenuItem.Text = "Обновить все";
-            this.uploadAllToolStripMenuItem.Click += new System.EventHandler(this.uploadAllToolStripMenuItem_Click);
-            // 
-            // privateDataToolStripMenuItem
-            // 
-            this.privateDataToolStripMenuItem.Name = "privateDataToolStripMenuItem";
-            this.privateDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.privateDataToolStripMenuItem.Text = "Личные данные";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
-            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -297,7 +302,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(676, 510);
             this.Name = "MainMenuForm";
             this.Text = "Меню";

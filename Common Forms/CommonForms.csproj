@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14DC747C-97DF-4445-ACDC-986C9CA36002}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>AdminApp</RootNamespace>
-    <AssemblyName>AdminApp</AssemblyName>
+    <ProjectGuid>{28993801-1821-439F-8FBF-81760ACD6711}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Common_Forms</RootNamespace>
+    <AssemblyName>Common Forms</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,52 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConditionEditingForm.cs">
+    <Compile Include="CustomerInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConditionEditingForm.Designer.cs">
-      <DependentUpon>ConditionEditingForm.cs</DependentUpon>
+    <Compile Include="CustomerInfoForm.Designer.cs">
+      <DependentUpon>CustomerInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DepositConditionsForm.cs">
+    <Compile Include="DepositAddingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DepositConditionsForm.Designer.cs">
-      <DependentUpon>DepositConditionsForm.cs</DependentUpon>
+    <Compile Include="DepositAddingForm.Designer.cs">
+      <DependentUpon>DepositAddingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DepositEditingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DepositEditingForm.Designer.cs">
-      <DependentUpon>DepositEditingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainMenuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainMenuForm.Designer.cs">
-      <DependentUpon>MainMenuForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ConditionEditingForm.resx">
-      <DependentUpon>ConditionEditingForm.cs</DependentUpon>
+    <EmbeddedResource Include="CustomerInfoForm.resx">
+      <DependentUpon>CustomerInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DepositConditionsForm.resx">
-      <DependentUpon>DepositConditionsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DepositEditingForm.resx">
-      <DependentUpon>DepositEditingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainMenuForm.resx">
-      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    <EmbeddedResource Include="DepositAddingForm.resx">
+      <DependentUpon>DepositAddingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -124,13 +96,9 @@
       <Project>{ba6d3134-b29b-4baf-8872-c8e8351ca32e}</Project>
       <Name>BankLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Common Forms\CommonForms.csproj">
-      <Project>{28993801-1821-439f-8fbf-81760acd6711}</Project>
-      <Name>CommonForms</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\deposit_icon.png" />
+    <None Include="images\user_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,19 +9,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdminApp
+namespace CommonForms
 {
     public partial class CustomerInfoForm : Form
     {
-        Customer customer;
-        MyBank bank;
+        private Customer customer;
+        private MyBank bank;
         private bool isInputChanged;
 
-        public CustomerInfoForm(Customer customer, MyBank bank)
+        public CustomerInfoForm(Customer customer, MyBank bank, bool isAdmin)
         {
             InitializeComponent();
             this.customer = customer;
             this.bank = bank;
+            
+            if (isAdmin)
+            {
+                passwordLabel.Visible = false;
+                passwordTextBox.Visible = false;
+            }
+            else
+            {
+                loginLabel.Visible = false;
+                loginTextBox.Visible = false;
+            }
+
             Fill();
             isInputChanged = false;
             saveButton.Enabled = false;
@@ -30,6 +42,7 @@ namespace AdminApp
         private void Fill()
         {
             loginTextBox.Text = customer.Login;
+            passwordTextBox.Text = customer.Password;
             fullNameTextBox.Text = customer.FullName;
             accNumberTextBox.Text = customer.AccountNumber.ToString();
             addressTextBox.Text = customer.Address;
@@ -49,7 +62,7 @@ namespace AdminApp
                 customer.Change(
                     new Customer(
                         loginTextBox.Text,
-                        customer.Password,
+                        passwordTextBox.Text,
                         fullNameTextBox.Text,
                         accNumberTextBox.Text,
                         addressTextBox.Text,

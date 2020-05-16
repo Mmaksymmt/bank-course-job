@@ -73,6 +73,18 @@ namespace Bank.Models
             }
             return null;
         }
+
+        public void RemoveEmptyDeposits(Customer customer)
+        {
+            for (int i = 0; i < customer.Deposits.Count; i++)
+            {
+                if (customer.Deposits[i].Value <= 0)
+                {
+                    customer.Deposits.Remove(customer.Deposits[i]);
+                    i--;
+                }
+            }
+        }
     }
 
     public class InputException : Exception

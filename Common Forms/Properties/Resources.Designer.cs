@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdminApp.Properties {
+namespace Common_Forms.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AdminApp.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdminApp.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Common_Forms.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,9 @@ namespace AdminApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap deposit_icon {
+        internal static System.Drawing.Bitmap user_icon {
             get {
-                object obj = ResourceManager.GetObject("deposit_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("user_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -19,8 +19,8 @@ namespace AdminApp
         public DepositConditionsForm(MyBank bank)
         {
             InitializeComponent();
-            conditionsBindingSource.DataSource = bank.DepositConditions;
             this.bank = bank;
+            conditionsBindingSource.DataSource = this.bank.DepositConditions;
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿namespace AdminApp
+﻿namespace CommonForms
 {
     partial class CustomerInfoForm
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerInfoForm));
             this.userIconBox = new System.Windows.Forms.PictureBox();
             this.loginLabel = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
@@ -41,12 +42,14 @@
             this.birthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.saveButton = new System.Windows.Forms.Button();
             this.ReturnButton = new System.Windows.Forms.Button();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.userIconBox)).BeginInit();
             this.SuspendLayout();
             // 
             // userIconBox
             // 
-            this.userIconBox.Image = global::AdminApp.Properties.Resources.user_icon;
+            this.userIconBox.Image = ((System.Drawing.Image)(resources.GetObject("userIconBox.Image")));
             this.userIconBox.Location = new System.Drawing.Point(428, 35);
             this.userIconBox.Name = "userIconBox";
             this.userIconBox.Size = new System.Drawing.Size(120, 120);
@@ -164,11 +167,31 @@
             this.ReturnButton.UseVisualStyleBackColor = true;
             this.ReturnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
+            // passwordLabel
+            // 
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(12, 9);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(57, 16);
+            this.passwordLabel.TabIndex = 13;
+            this.passwordLabel.Text = "Пароль";
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Location = new System.Drawing.Point(85, 9);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
+            this.passwordTextBox.Size = new System.Drawing.Size(240, 22);
+            this.passwordTextBox.TabIndex = 1;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.InputChanged);
+            // 
             // CustomerInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 301);
+            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.ReturnButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.birthDateTimePicker);
@@ -212,5 +235,7 @@
         private System.Windows.Forms.DateTimePicker birthDateTimePicker;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button ReturnButton;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.TextBox passwordTextBox;
     }
 }

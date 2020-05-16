@@ -1,4 +1,6 @@
 ﻿using Bank.Models;
+using Common_Forms;
+using CommonForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +26,11 @@ namespace CustomerApp
             currentCustomer = customer;
             welcomeLabel.Text = "Добро пожаловать, " + customer.FullName + "!";
             isLogOut = false;
+
+            foreach (Deposit depos in customer.Deposits)
+            {
+                depos.Charge();
+            }
             depositsBindingSource.DataSource = currentCustomer.Deposits;
         }
 
@@ -74,13 +81,13 @@ namespace CustomerApp
             Close();
         }
 
-        private void uploadAllToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UploadAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bank.Charge();
             depositsBindingSource.ResetBindings(false);
         }
 
-        private void depositsGridView_CellFormatting(
+        private void DepositsGridView_CellFormatting(
             object sender,
             DataGridViewCellFormattingEventArgs e
         )
@@ -101,6 +108,51 @@ namespace CustomerApp
                 row.DefaultCellStyle.SelectionForeColor
                     = depositsGridView.DefaultCellStyle.SelectionForeColor;
             }
+        }
+
+        private void PrivateDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var customerEditForm = new CustomerInfoForm(currentCustomer, bank, false);
+            customerEditForm.ShowDialog();
+            welcomeLabel.Text = "Добро пожаловать, " + currentCustomer.FullName + "!";
+        }
+
+        private void AddDepositToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var depositAddingForm = new DepositAddingForm(bank, currentCustomer);
+            depositAddingForm.ShowDialog();
+            depositsBindingSource.ResetBindings(false);
+        }
+
+        private void PutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (depositsGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            Deposit deposit =
+                depositsGridView.SelectedRows[0].DataBoundItem as Deposit;
+            deposit.Charge();
+            var putForm = new PutForm(deposit);
+            putForm.ShowDialog();
+            depositsBindingSource.ResetBindings(false);
+        }
+
+        private void WithdrawToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (depositsGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            Deposit deposit =
+                depositsGridView.SelectedRows[0].DataBoundItem as Deposit;
+            deposit.Charge();
+            var withdrawForm = new WithdrawForm(deposit);
+            withdrawForm.ShowDialog();
+            bank.RemoveEmptyDeposits(currentCustomer);
+            depositsBindingSource.ResetBindings(false);
         }
     }
 }

@@ -8,19 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bank.Models;
+using Common_Forms;
+using CommonForms;
 
 namespace AdminApp
 {
     public partial class MainMenuForm : Form
     {
-        private MyBank Bank;
+        private MyBank bank;
 
         public MainMenuForm(MyBank bank)
         {
-            Bank = bank;
+            this.bank = bank;
             InitializeComponent();
             //Bank.FillTestData(10);
-            CustomersBindingSource.DataSource = Bank.Customers;            
+            CustomersBindingSource.DataSource = bank.Customers;            
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,13 +32,13 @@ namespace AdminApp
 
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Bank.Load();
+            bank.Load();
             CustomersBindingSource.ResetBindings(false);
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Bank.Save();
+            bank.Save();
         }
 
         private void MainMenuForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -50,7 +52,7 @@ namespace AdminApp
                     e.Cancel = true;
                     break;
                 case DialogResult.OK:
-                    Bank.Save();
+                    bank.Save();
                     break;
                 case DialogResult.No:
                     break;
@@ -73,7 +75,7 @@ namespace AdminApp
                 );
                 if (res == DialogResult.OK)
                 {
-                    Bank.Customers.Remove(toDelete);
+                    bank.Customers.Remove(toDelete);
                     CustomersBindingSource.ResetBindings(false);
                 }
             }
@@ -122,7 +124,7 @@ namespace AdminApp
 
         private void UploadAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Bank.Charge();
+            bank.Charge();
             //CustomersBindingSource.ResetBindings(false);
             DepositsBindingSource.ResetBindings(false);
         }
@@ -138,7 +140,7 @@ namespace AdminApp
                 = usersGridView.SelectedRows[0].DataBoundItem as Customer;
             if (selectedCustomer != null)
             {
-                var customerInfoForm = new CustomerInfoForm(selectedCustomer, Bank);
+                var customerInfoForm = new CustomerInfoForm(selectedCustomer, bank, true);
                 customerInfoForm.ShowDialog();
                 CustomersBindingSource.ResetBindings(false);
             }
@@ -164,7 +166,7 @@ namespace AdminApp
             }
         }
 
-        private void depositsGridView_CellFormatting(
+        private void DepositsGridView_CellFormatting(
             object sender,
             DataGridViewCellFormattingEventArgs e
         )
@@ -179,18 +181,36 @@ namespace AdminApp
             }
             else
             {
-                row.DefaultCellStyle.BackColor = depositsGridView.DefaultCellStyle.BackColor;
-                row.DefaultCellStyle.SelectionBackColor
-                    = depositsGridView.DefaultCellStyle.SelectionBackColor;
-                row.DefaultCellStyle.SelectionForeColor
-                    = depositsGridView.DefaultCellStyle.SelectionForeColor;
+                row.DefaultCellStyle.BackColor =
+                    depositsGridView.DefaultCellStyle.BackColor;
+                row.DefaultCellStyle.SelectionBackColor =
+                    depositsGridView.DefaultCellStyle.SelectionBackColor;
+                row.DefaultCellStyle.SelectionForeColor =
+                    depositsGridView.DefaultCellStyle.SelectionForeColor;
             }
         }
 
-        private void availableToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AvailableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var conditionsForm = new DepositConditionsForm(Bank);
+            var conditionsForm = new DepositConditionsForm(bank);
             conditionsForm.Show();
+        }
+
+        private void CreateDeposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (usersGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            Customer customer = usersGridView.SelectedRows[0].DataBoundItem as Customer;
+            if (customer == null)
+            {
+                return;
+            }
+
+            var createDepositForm = new DepositAddingForm(bank, customer);
+            createDepositForm.ShowDialog();
+            DepositsBindingSource.ResetBindings(false);
         }
     }
 }

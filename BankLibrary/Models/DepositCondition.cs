@@ -23,5 +23,13 @@ namespace BankLibrary.Models
         public int Percent { get; set; }
         public AccrualsInterval Interval { get; set; }
         public int Duration { get; set; }
+        public string InfoString
+        {
+            get
+            {
+                return Percent + "% / " + Interval.ToString() + "; Длительность: " +
+                    Duration + " " + Interval + "s.";
+            }
+        }
     }
 }

@@ -47,7 +47,9 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.депозитToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createDeposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.availableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +67,6 @@
             this.valueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finishDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.availableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepositsBindingSource)).BeginInit();
@@ -163,6 +164,7 @@
             // 
             this.депозитToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uploadAllToolStripMenuItem,
+            this.createDeposToolStripMenuItem,
             this.editDepositToolStripMenuItem,
             this.availableToolStripMenuItem,
             this.toolStripMenuItem2,
@@ -179,12 +181,26 @@
             this.uploadAllToolStripMenuItem.Text = "Обновить все";
             this.uploadAllToolStripMenuItem.Click += new System.EventHandler(this.UploadAllToolStripMenuItem_Click);
             // 
+            // createDeposToolStripMenuItem
+            // 
+            this.createDeposToolStripMenuItem.Name = "createDeposToolStripMenuItem";
+            this.createDeposToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.createDeposToolStripMenuItem.Text = "Создать";
+            this.createDeposToolStripMenuItem.Click += new System.EventHandler(this.CreateDeposToolStripMenuItem_Click);
+            // 
             // editDepositToolStripMenuItem
             // 
             this.editDepositToolStripMenuItem.Name = "editDepositToolStripMenuItem";
             this.editDepositToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.editDepositToolStripMenuItem.Text = "Редактировать";
             this.editDepositToolStripMenuItem.Click += new System.EventHandler(this.EditDepositToolStripMenuItem_Click);
+            // 
+            // availableToolStripMenuItem
+            // 
+            this.availableToolStripMenuItem.Name = "availableToolStripMenuItem";
+            this.availableToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.availableToolStripMenuItem.Text = "Доступные условия";
+            this.availableToolStripMenuItem.Click += new System.EventHandler(this.AvailableToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -348,7 +364,7 @@
             this.depositsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.depositsGridView.Size = new System.Drawing.Size(515, 497);
             this.depositsGridView.TabIndex = 5;
-            this.depositsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.depositsGridView_CellFormatting);
+            this.depositsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DepositsGridView_CellFormatting);
             // 
             // percentColumn
             // 
@@ -394,13 +410,6 @@
             this.finishDateColumn.HeaderText = "Конец";
             this.finishDateColumn.Name = "finishDateColumn";
             this.finishDateColumn.ReadOnly = true;
-            // 
-            // availableToolStripMenuItem
-            // 
-            this.availableToolStripMenuItem.Name = "availableToolStripMenuItem";
-            this.availableToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.availableToolStripMenuItem.Text = "Доступные условия";
-            this.availableToolStripMenuItem.Click += new System.EventHandler(this.availableToolStripMenuItem_Click);
             // 
             // MainMenuForm
             // 
@@ -465,6 +474,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn startDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn finishDateColumn;
         private System.Windows.Forms.ToolStripMenuItem availableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createDeposToolStripMenuItem;
     }
 }
 
