@@ -21,8 +21,23 @@ namespace AdminApp
         {
             this.bank = bank;
             InitializeComponent();
+            EnableCustomerButtons(false);
+            EnableDepositButtons(false);
             //Bank.FillTestData(10);
             CustomersBindingSource.DataSource = bank.Customers;            
+        }
+
+        private void EnableDepositButtons(bool value)
+        {
+            deleteDepositToolStripMenuItem.Enabled = value;
+            editDepositToolStripMenuItem.Enabled = value;
+        }
+
+        private void EnableCustomerButtons(bool value)
+        {
+            customerInfoToolStripMenuItem.Enabled = value;
+            deleteToolStripMenuItem.Enabled = value;
+            createDeposToolStripMenuItem.Enabled = value;
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,11 +76,6 @@ namespace AdminApp
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (usersGridView.SelectedRows.Count == 0)
-            {
-                return;
-            }
-
             Customer toDelete
                 = usersGridView.SelectedRows[0].DataBoundItem as Customer;
             if (toDelete != null)
@@ -83,28 +93,11 @@ namespace AdminApp
 
         private void UsersGridView_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (usersGridView.SelectedRows.Count == 0)
-            {
-                DepositsBindingSource.DataSource = new List<int>();
-                return;
-            }
-
-            Customer selectedCustomer
-                = usersGridView.SelectedRows[0].DataBoundItem as Customer;
-            if (selectedCustomer != null)
-            {
-                DepositsBindingSource.DataSource = selectedCustomer.Deposits;
-                DepositsBindingSource.ResetBindings(false);
-            }
+            
         }
 
         private void DeleteDepositToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (depositsGridView.SelectedRows.Count == 0)
-            {
-                return;
-            }
-
             Customer selectedCustomer
                 = usersGridView.SelectedRows[0].DataBoundItem as Customer;
             Deposit selectedDeposit =
@@ -131,11 +124,6 @@ namespace AdminApp
 
         private void CustomerInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (usersGridView.SelectedRows.Count == 0)
-            {
-                return;
-            }
-
             Customer selectedCustomer
                 = usersGridView.SelectedRows[0].DataBoundItem as Customer;
             if (selectedCustomer != null)
@@ -148,11 +136,6 @@ namespace AdminApp
 
         private void EditDepositToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (depositsGridView.SelectedRows.Count == 0)
-            {
-                return;
-            }
-
             Deposit selectedDeposit
                 = depositsGridView.SelectedRows[0].DataBoundItem as Deposit;
             if (selectedDeposit != null)
@@ -198,10 +181,6 @@ namespace AdminApp
 
         private void CreateDeposToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (usersGridView.SelectedRows.Count == 0)
-            {
-                return;
-            }
             Customer customer = usersGridView.SelectedRows[0].DataBoundItem as Customer;
             if (customer == null)
             {
@@ -211,6 +190,33 @@ namespace AdminApp
             var createDepositForm = new DepositAddingForm(bank, customer);
             createDepositForm.ShowDialog();
             DepositsBindingSource.ResetBindings(false);
+        }
+
+        private void DepositsGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isNoDeposit = depositsGridView.SelectedRows.Count != 0;
+            EnableDepositButtons(isNoDeposit);
+        }
+
+        private void UsersGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelectedNull = usersGridView.SelectedRows.Count == 0;
+            EnableCustomerButtons(!isSelectedNull);
+            if (isSelectedNull)
+            {
+                DepositsBindingSource.DataSource = new List<Deposit>();
+                DepositsBindingSource.ResetBindings(false);
+                return;
+            }
+
+            Customer selectedCustomer
+                = usersGridView.SelectedRows[0].DataBoundItem as Customer;
+            if (!isSelectedNull)
+            {
+                DepositsBindingSource.DataSource = selectedCustomer.Deposits;
+                DepositsBindingSource.ResetBindings(false);
+            }
+            
         }
     }
 }

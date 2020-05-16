@@ -22,6 +22,7 @@ namespace CustomerApp
         public MainMenuForm(MyBank bank, Customer customer)
         {
             InitializeComponent();
+            EnableDepositButtons(false);
             this.bank = bank;
             currentCustomer = customer;
             welcomeLabel.Text = "Добро пожаловать, " + customer.FullName + "!";
@@ -32,6 +33,14 @@ namespace CustomerApp
                 depos.Charge();
             }
             depositsBindingSource.DataSource = currentCustomer.Deposits;
+        }
+
+        private void EnableDepositButtons(bool value)
+        {
+            putToolStripMenuItem.Enabled = value;
+            withdrawToolStripMenuItem.Enabled = value;
+            putButton.Enabled = value;
+            withdrawButton.Enabled = value;
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -126,11 +135,6 @@ namespace CustomerApp
 
         private void PutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (depositsGridView.SelectedRows.Count == 0)
-            {
-                return;
-            }
-
             Deposit deposit =
                 depositsGridView.SelectedRows[0].DataBoundItem as Deposit;
             deposit.Charge();
@@ -141,11 +145,6 @@ namespace CustomerApp
 
         private void WithdrawToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (depositsGridView.SelectedRows.Count == 0)
-            {
-                return;
-            }
-
             Deposit deposit =
                 depositsGridView.SelectedRows[0].DataBoundItem as Deposit;
             deposit.Charge();
@@ -153,6 +152,12 @@ namespace CustomerApp
             withdrawForm.ShowDialog();
             bank.RemoveEmptyDeposits(currentCustomer);
             depositsBindingSource.ResetBindings(false);
+        }
+
+        private void DepositsGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelectedNull = depositsGridView.SelectedRows.Count == 0;
+            EnableDepositButtons(!isSelectedNull);
         }
     }
 }

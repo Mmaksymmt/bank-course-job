@@ -56,6 +56,9 @@
             this.startDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finishDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depositsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.addButton = new System.Windows.Forms.Button();
+            this.putButton = new System.Windows.Forms.Button();
+            this.withdrawButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.depositsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.depositsBindingSource)).BeginInit();
@@ -244,6 +247,7 @@
             this.depositsGridView.Size = new System.Drawing.Size(636, 335);
             this.depositsGridView.TabIndex = 6;
             this.depositsGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DepositsGridView_CellFormatting);
+            this.depositsGridView.SelectionChanged += new System.EventHandler(this.DepositsGridView_SelectionChanged);
             // 
             // percentColumn
             // 
@@ -290,12 +294,45 @@
             this.finishDateColumn.Name = "finishDateColumn";
             this.finishDateColumn.ReadOnly = true;
             // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(12, 435);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(93, 24);
+            this.addButton.TabIndex = 7;
+            this.addButton.Text = "Создать";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.AddDepositToolStripMenuItem_Click);
+            // 
+            // putButton
+            // 
+            this.putButton.Location = new System.Drawing.Point(111, 435);
+            this.putButton.Name = "putButton";
+            this.putButton.Size = new System.Drawing.Size(93, 24);
+            this.putButton.TabIndex = 8;
+            this.putButton.Text = "Положить";
+            this.putButton.UseVisualStyleBackColor = true;
+            this.putButton.Click += new System.EventHandler(this.PutToolStripMenuItem_Click);
+            // 
+            // withdrawButton
+            // 
+            this.withdrawButton.Location = new System.Drawing.Point(210, 435);
+            this.withdrawButton.Name = "withdrawButton";
+            this.withdrawButton.Size = new System.Drawing.Size(93, 24);
+            this.withdrawButton.TabIndex = 9;
+            this.withdrawButton.Text = "Снять";
+            this.withdrawButton.UseVisualStyleBackColor = true;
+            this.withdrawButton.Click += new System.EventHandler(this.WithdrawToolStripMenuItem_Click);
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(660, 471);
+            this.Controls.Add(this.withdrawButton);
+            this.Controls.Add(this.putButton);
+            this.Controls.Add(this.addButton);
             this.Controls.Add(this.depositsGridView);
             this.Controls.Add(this.depositsLabel);
             this.Controls.Add(this.welcomeLabel);
@@ -344,5 +381,8 @@
         private System.Windows.Forms.ToolStripMenuItem privateDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button putButton;
+        private System.Windows.Forms.Button withdrawButton;
     }
 }
