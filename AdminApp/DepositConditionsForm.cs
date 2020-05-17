@@ -23,6 +23,12 @@ namespace AdminApp
             conditionsBindingSource.DataSource = this.bank.DepositConditions;
         }
 
+        private void EnableButtons(bool value)
+        {
+            editButton.Enabled = value;
+            deleteButton.Enabled = value;
+        }
+
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             if (conditionsGridView.SelectedRows.Count == 0)
@@ -66,6 +72,12 @@ namespace AdminApp
             editForm.ShowDialog();
 
             conditionsBindingSource.ResetBindings(false);
+        }
+
+        private void ConditionsGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelectedNull = conditionsGridView.SelectedRows.Count == 0;
+            EnableButtons(!isSelectedNull);
         }
     }
 }

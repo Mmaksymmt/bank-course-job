@@ -22,14 +22,14 @@ namespace CustomerApp
             this.bank = bank;
         }
 
-        private void returnButton_Click(object sender, EventArgs e)
+        private void ReturnButton_Click(object sender, EventArgs e)
         {
             Program.context.MainForm = new LoginForm(bank);
             Close();
             Program.context.MainForm.Show();
         }
 
-        private void registerButton_Click(object sender, EventArgs e)
+        private void RegisterButton_Click(object sender, EventArgs e)
         {
             Customer customer = new Customer(
                 loginTextBox.Text,
@@ -57,6 +57,7 @@ namespace CustomerApp
             // If no exceptions - register and login
 
             bank.Customers.Add(customer);
+            bank.Save();
             Program.context.MainForm = new MainMenuForm(bank, customer);
             Close();
             Program.context.MainForm.Show();

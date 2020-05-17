@@ -16,10 +16,12 @@ namespace AdminApp
     public partial class MainMenuForm : Form
     {
         private MyBank bank;
+        private bool isDirty;
 
         public MainMenuForm(MyBank bank)
         {
             this.bank = bank;
+            isDirty = false;
             InitializeComponent();
             EnableCustomerButtons(false);
             EnableDepositButtons(false);
@@ -54,20 +56,26 @@ namespace AdminApp
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bank.Save();
+            isDirty = false;
         }
 
         private void MainMenuForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (!isDirty)
+            {
+                return;
+            }
+
             DialogResult res = MessageBox.Show(
                 "Сохранить данные перед закрытием?", "Выход", MessageBoxButtons.YesNoCancel
             );
             switch (res)
             {
+                case DialogResult.Yes:
+                    bank.Save();
+                    break;
                 case DialogResult.Cancel:
                     e.Cancel = true;
-                    break;
-                case DialogResult.OK:
-                    bank.Save();
                     break;
                 case DialogResult.No:
                     break;
@@ -87,13 +95,9 @@ namespace AdminApp
                 {
                     bank.Customers.Remove(toDelete);
                     CustomersBindingSource.ResetBindings(false);
+                    isDirty = true;
                 }
             }
-        }
-
-        private void UsersGridView_SelectedValueChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void DeleteDepositToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,6 +115,7 @@ namespace AdminApp
                 {
                     selectedCustomer.Deposits.Remove(selectedDeposit);
                     DepositsBindingSource.ResetBindings(false);
+                    isDirty = true;
                 }
             }
         }
@@ -130,6 +135,7 @@ namespace AdminApp
             {
                 var customerInfoForm = new CustomerInfoFormAdmin(selectedCustomer, bank);
                 customerInfoForm.ShowDialog();
+                isDirty = true;
                 CustomersBindingSource.ResetBindings(false);
             }
         }
@@ -145,6 +151,7 @@ namespace AdminApp
                     selectedDeposit
                 );
                 depositEditingForm.ShowDialog();
+                isDirty = true;
                 DepositsBindingSource.ResetBindings(false);
             }
         }
@@ -177,6 +184,7 @@ namespace AdminApp
         {
             var conditionsForm = new DepositConditionsForm(bank);
             conditionsForm.Show();
+            isDirty = true;
         }
 
         private void CreateDeposToolStripMenuItem_Click(object sender, EventArgs e)
@@ -189,6 +197,7 @@ namespace AdminApp
 
             var createDepositForm = new DepositAddingForm(bank, customer);
             createDepositForm.ShowDialog();
+            isDirty = true;
             DepositsBindingSource.ResetBindings(false);
         }
 

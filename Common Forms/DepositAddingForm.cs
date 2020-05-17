@@ -26,12 +26,12 @@ namespace Common_Forms
             conditionsComboBox.DisplayMember = "InfoString";
         }
 
-        private void returnButton_Click(object sender, EventArgs e)
+        private void ReturnButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void createButton_Click(object sender, EventArgs e)
+        private void CreateButton_Click(object sender, EventArgs e)
         {
             var condition = conditionsComboBox.SelectedItem as DepositCondition;
             customer.Deposits.Add(
@@ -43,6 +43,12 @@ namespace Common_Forms
                 )
             );
             Close();
+        }
+
+        private void ConditionsComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            bool isSelected = conditionsComboBox.SelectedValue != null;
+            createButton.Enabled = isSelected;
         }
     }
 }

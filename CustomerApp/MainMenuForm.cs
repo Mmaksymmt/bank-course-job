@@ -18,6 +18,7 @@ namespace CustomerApp
         private MyBank bank;
         private Customer currentCustomer;
         private bool isLogOut;
+        private bool isDirty;
 
         public MainMenuForm(MyBank bank, Customer customer)
         {
@@ -27,6 +28,7 @@ namespace CustomerApp
             currentCustomer = customer;
             welcomeLabel.Text = "Добро пожаловать, " + customer.FullName + "!";
             isLogOut = false;
+            isDirty = false;
 
             foreach (Deposit depos in customer.Deposits)
             {
@@ -46,6 +48,7 @@ namespace CustomerApp
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bank.Save();
+            isDirty = false;
         }
 
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -60,22 +63,25 @@ namespace CustomerApp
 
         private void MainMenuForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult res = MessageBox.Show(
-                "Выйти и сохранить?",
-                "",
-                MessageBoxButtons.YesNoCancel
-            );
-            switch (res)
+            if (isDirty)
             {
-                case DialogResult.Cancel:
-                    e.Cancel = true;
-                    isLogOut = false;
-                    return;
-                case DialogResult.OK:
-                    bank.Save();
-                    break;
-                case DialogResult.No:
-                    break; 
+                DialogResult res = MessageBox.Show(
+                    "Выйти и сохранить?",
+                    "",
+                    MessageBoxButtons.YesNoCancel
+                );
+                switch (res)
+                {
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        isLogOut = false;
+                        return;
+                    case DialogResult.Yes:
+                        bank.Save();
+                        break;
+                    case DialogResult.No:
+                        break;
+                }
             }
             if (isLogOut)
             {
@@ -123,6 +129,7 @@ namespace CustomerApp
         {
             var customerEditForm = new CustomerInfoFormCustomer(currentCustomer, bank);
             customerEditForm.ShowDialog();
+            isDirty = true;
             welcomeLabel.Text = "Добро пожаловать, " + currentCustomer.FullName + "!";
         }
 
@@ -130,6 +137,7 @@ namespace CustomerApp
         {
             var depositAddingForm = new DepositAddingForm(bank, currentCustomer);
             depositAddingForm.ShowDialog();
+            isDirty = true;
             depositsBindingSource.ResetBindings(false);
         }
 
@@ -140,6 +148,7 @@ namespace CustomerApp
             deposit.Charge();
             var putForm = new PutForm(deposit);
             putForm.ShowDialog();
+            isDirty = true;
             depositsBindingSource.ResetBindings(false);
         }
 
@@ -151,6 +160,7 @@ namespace CustomerApp
             var withdrawForm = new WithdrawForm(deposit);
             withdrawForm.ShowDialog();
             bank.RemoveEmptyDeposits(currentCustomer);
+            isDirty = true;
             depositsBindingSource.ResetBindings(false);
         }
 

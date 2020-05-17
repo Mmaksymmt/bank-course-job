@@ -154,7 +154,7 @@
             this.registerButton.TabIndex = 12;
             this.registerButton.Text = "Создать аккаунт";
             this.registerButton.UseVisualStyleBackColor = true;
-            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
+            this.registerButton.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
             // returnButton
             // 
@@ -164,7 +164,7 @@
             this.returnButton.TabIndex = 13;
             this.returnButton.Text = "Назад";
             this.returnButton.UseVisualStyleBackColor = true;
-            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            this.returnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
             // RegisterForm
             // 

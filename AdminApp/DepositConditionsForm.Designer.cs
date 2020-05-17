@@ -61,6 +61,7 @@
             this.conditionsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.conditionsGridView.Size = new System.Drawing.Size(308, 325);
             this.conditionsGridView.TabIndex = 0;
+            this.conditionsGridView.SelectionChanged += new System.EventHandler(this.ConditionsGridView_SelectionChanged);
             // 
             // percentColumn
             // 
@@ -89,6 +90,7 @@
             // 
             // deleteButton
             // 
+            this.deleteButton.Enabled = false;
             this.deleteButton.Location = new System.Drawing.Point(235, 345);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(85, 31);
@@ -109,6 +111,7 @@
             // 
             // editButton
             // 
+            this.editButton.Enabled = false;
             this.editButton.Location = new System.Drawing.Point(124, 345);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(85, 31);

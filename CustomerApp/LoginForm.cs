@@ -27,7 +27,7 @@ namespace CustomerApp
         {
         }
 
-        private void logInButton_Click(object sender, EventArgs e)
+        private void LogInButton_Click(object sender, EventArgs e)
         {
             string login = loginTextBox.Text;
             string password = passwordTextBox.Text;
@@ -47,7 +47,7 @@ namespace CustomerApp
             Program.context.MainForm.Show();
         }
 
-        private void registerButton_Click(object sender, EventArgs e)
+        private void RegisterButton_Click(object sender, EventArgs e)
         {
             Program.context.MainForm = new RegisterForm(bank);
             Close();

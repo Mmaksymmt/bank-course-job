@@ -44,6 +44,7 @@
             this.conditionsComboBox.Name = "conditionsComboBox";
             this.conditionsComboBox.Size = new System.Drawing.Size(324, 24);
             this.conditionsComboBox.TabIndex = 0;
+            this.conditionsComboBox.SelectedValueChanged += new System.EventHandler(this.ConditionsComboBox_SelectedValueChanged);
             // 
             // valueLabel
             // 
@@ -80,13 +81,14 @@
             // 
             // createButton
             // 
+            this.createButton.Enabled = false;
             this.createButton.Location = new System.Drawing.Point(12, 210);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(157, 32);
             this.createButton.TabIndex = 3;
             this.createButton.Text = "Создать";
             this.createButton.UseVisualStyleBackColor = true;
-            this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            this.createButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // returnButton
             // 
@@ -96,7 +98,7 @@
             this.returnButton.TabIndex = 4;
             this.returnButton.Text = "Отменить";
             this.returnButton.UseVisualStyleBackColor = true;
-            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            this.returnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
             // DepositAddingForm
             // 

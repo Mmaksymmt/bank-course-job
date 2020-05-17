@@ -44,7 +44,7 @@
             this.logInButton.TabIndex = 9;
             this.logInButton.Text = "Войти";
             this.logInButton.UseVisualStyleBackColor = true;
-            this.logInButton.Click += new System.EventHandler(this.logInButton_Click);
+            this.logInButton.Click += new System.EventHandler(this.LogInButton_Click);
             // 
             // passwordTextBox
             // 
@@ -90,7 +90,7 @@
             this.registerButton.TabIndex = 10;
             this.registerButton.Text = "Регистрация";
             this.registerButton.UseVisualStyleBackColor = true;
-            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
+            this.registerButton.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
             // LoginForm
             // 

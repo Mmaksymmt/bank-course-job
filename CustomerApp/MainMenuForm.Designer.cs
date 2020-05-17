@@ -162,33 +162,33 @@
             // 
             this.uploadAllToolStripMenuItem.Name = "uploadAllToolStripMenuItem";
             this.uploadAllToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.uploadAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uploadAllToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.uploadAllToolStripMenuItem.Text = "Обновить все";
             this.uploadAllToolStripMenuItem.Click += new System.EventHandler(this.UploadAllToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(167, 6);
             // 
             // addDepositToolStripMenuItem
             // 
             this.addDepositToolStripMenuItem.Name = "addDepositToolStripMenuItem";
-            this.addDepositToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addDepositToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.addDepositToolStripMenuItem.Text = "Создать новый";
             this.addDepositToolStripMenuItem.Click += new System.EventHandler(this.AddDepositToolStripMenuItem_Click);
             // 
             // withdrawToolStripMenuItem
             // 
             this.withdrawToolStripMenuItem.Name = "withdrawToolStripMenuItem";
-            this.withdrawToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.withdrawToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.withdrawToolStripMenuItem.Text = "Снять сумму";
             this.withdrawToolStripMenuItem.Click += new System.EventHandler(this.WithdrawToolStripMenuItem_Click);
             // 
             // putToolStripMenuItem
             // 
             this.putToolStripMenuItem.Name = "putToolStripMenuItem";
-            this.putToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.putToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.putToolStripMenuItem.Text = "Положить сумму";
             this.putToolStripMenuItem.Click += new System.EventHandler(this.PutToolStripMenuItem_Click);
             // 
@@ -296,6 +296,7 @@
             // 
             // addButton
             // 
+            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addButton.Location = new System.Drawing.Point(12, 435);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(93, 24);
@@ -306,6 +307,7 @@
             // 
             // putButton
             // 
+            this.putButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.putButton.Location = new System.Drawing.Point(111, 435);
             this.putButton.Name = "putButton";
             this.putButton.Size = new System.Drawing.Size(93, 24);
@@ -316,6 +318,7 @@
             // 
             // withdrawButton
             // 
+            this.withdrawButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.withdrawButton.Location = new System.Drawing.Point(210, 435);
             this.withdrawButton.Name = "withdrawButton";
             this.withdrawButton.Size = new System.Drawing.Size(93, 24);
