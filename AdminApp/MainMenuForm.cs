@@ -227,5 +227,16 @@ namespace AdminApp
             }
             
         }
+
+        private void AboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Приложение \"Банк\" для администратора.\n" +
+                "Автор: Тельной Максим\n" +
+                "ПЗПІ-19-4\n2020",
+                "О программе",
+                MessageBoxButtons.OK
+            );
+        }
     }
 }

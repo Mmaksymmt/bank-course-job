@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DepositAddingForm));
             this.conditionsComboBox = new System.Windows.Forms.ComboBox();
             this.valueLabel = new System.Windows.Forms.Label();
             this.valueUpDown = new System.Windows.Forms.NumericUpDown();
@@ -111,6 +112,7 @@
             this.Controls.Add(this.valueLabel);
             this.Controls.Add(this.conditionsComboBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(364, 293);

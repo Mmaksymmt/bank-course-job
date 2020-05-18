@@ -169,5 +169,16 @@ namespace CustomerApp
             bool isSelectedNull = depositsGridView.SelectedRows.Count == 0;
             EnableDepositButtons(!isSelectedNull);
         }
+
+        private void AboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Приложение \"Банк\" для пользователей.\n" +
+                "Автор: Тельной Максим\n" +
+                "ПЗПІ-19-4\n2020",
+                "О программе",
+                MessageBoxButtons.OK
+            );
+        }
     }
 }

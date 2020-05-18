@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DepositConditionsForm));
             this.conditionsGridView = new System.Windows.Forms.DataGridView();
             this.percentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accrualsIntervalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,6 +131,7 @@
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.conditionsGridView);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(350, 427);
