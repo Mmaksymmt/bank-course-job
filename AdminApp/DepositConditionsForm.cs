@@ -12,15 +12,18 @@ using System.Windows.Forms;
 
 namespace AdminApp
 {
+    // Returns DialogResult.OK, if changed data
     public partial class DepositConditionsForm : Form
     {
         private MyBank bank;
+        private bool isDirty;
 
         public DepositConditionsForm(MyBank bank)
         {
             InitializeComponent();
             this.bank = bank;
             conditionsBindingSource.DataSource = this.bank.DepositConditions;
+            isDirty = false;
         }
 
         private void EnableButtons(bool value)
@@ -44,6 +47,7 @@ namespace AdminApp
             DepositCondition condition =
                 conditionsGridView.SelectedRows[0].DataBoundItem as DepositCondition;
             bank.DepositConditions.Remove(condition);
+            isDirty = true;
             conditionsBindingSource.ResetBindings(false);
         }
 
@@ -57,7 +61,11 @@ namespace AdminApp
             var condition =
                 conditionsGridView.SelectedRows[0].DataBoundItem as DepositCondition;
             var condEditForm = new ConditionEditingForm(bank, condition, false);
-            condEditForm.ShowDialog();
+            DialogResult res = condEditForm.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                isDirty = true;
+            }
             conditionsBindingSource.ResetBindings(false);
         }
 
@@ -69,8 +77,11 @@ namespace AdminApp
                 12
             );
             var editForm = new ConditionEditingForm(bank, condition, true);
-            editForm.ShowDialog();
-
+            DialogResult res = editForm.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                isDirty = true;
+            }
             conditionsBindingSource.ResetBindings(false);
         }
 
@@ -78,6 +89,14 @@ namespace AdminApp
         {
             bool isSelectedNull = conditionsGridView.SelectedRows.Count == 0;
             EnableButtons(!isSelectedNull);
+        }
+
+        private void DepositConditionsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isDirty)
+            {
+                DialogResult = DialogResult.OK;
+            }
         }
     }
 }

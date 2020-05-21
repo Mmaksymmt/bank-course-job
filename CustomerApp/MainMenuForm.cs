@@ -128,16 +128,22 @@ namespace CustomerApp
         private void PrivateDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var customerEditForm = new CustomerInfoFormCustomer(currentCustomer, bank);
-            customerEditForm.ShowDialog();
-            isDirty = true;
+            DialogResult res = customerEditForm.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                isDirty = true;
+            }
             welcomeLabel.Text = "Добро пожаловать, " + currentCustomer.FullName + "!";
         }
 
         private void AddDepositToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var depositAddingForm = new DepositAddingForm(bank, currentCustomer);
-            depositAddingForm.ShowDialog();
-            isDirty = true;
+            DialogResult res = depositAddingForm.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                isDirty = true;
+            }
             depositsBindingSource.ResetBindings(false);
         }
 
@@ -147,8 +153,11 @@ namespace CustomerApp
                 depositsGridView.SelectedRows[0].DataBoundItem as Deposit;
             deposit.Charge();
             var putForm = new PutForm(deposit);
-            putForm.ShowDialog();
-            isDirty = true;
+            DialogResult res = putForm.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                isDirty = true;
+            }
             depositsBindingSource.ResetBindings(false);
         }
 
@@ -158,9 +167,12 @@ namespace CustomerApp
                 depositsGridView.SelectedRows[0].DataBoundItem as Deposit;
             deposit.Charge();
             var withdrawForm = new WithdrawForm(deposit);
-            withdrawForm.ShowDialog();
-            bank.RemoveEmptyDeposits(currentCustomer);
-            isDirty = true;
+            DialogResult res = withdrawForm.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                bank.RemoveEmptyDeposits(currentCustomer);
+                isDirty = true;
+            }
             depositsBindingSource.ResetBindings(false);
         }
 

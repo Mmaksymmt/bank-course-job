@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace Common_Forms
 {
+    // Returns DialogResult.OK, if created
     public partial class DepositAddingForm : Form
     {
         private MyBank bank;
@@ -42,6 +43,7 @@ namespace Common_Forms
                     condition.Duration
                 )
             );
+            DialogResult = DialogResult.OK;
             Close();
         }
 

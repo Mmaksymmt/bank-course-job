@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 
 namespace Bank.Models
 {
-    // 
+    // Main class of model, represents bank
+    // Customers + affordable deposit conditions
     [Serializable]
     public class MyBank
     {

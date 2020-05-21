@@ -5,7 +5,8 @@ using System.Text;
 
 namespace BankLibrary.Models
 {
-    //
+    // Represents an affordable option for opening a deposit
+    // Percent + interval + duration
     [Serializable]
     public class DepositCondition
     {

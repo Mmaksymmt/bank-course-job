@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bank.Models
 {
-    // 
+    // Percent + value + interval + periods
     [Serializable]
     public class Deposit
     {

@@ -138,6 +138,7 @@
             this.MinimumSize = new System.Drawing.Size(350, 427);
             this.Name = "DepositConditionsForm";
             this.Text = "Доступные депозиты";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DepositConditionsForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.conditionsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.conditionsBindingSource)).EndInit();
             this.ResumeLayout(false);

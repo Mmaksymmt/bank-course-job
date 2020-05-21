@@ -11,11 +11,13 @@ using System.Windows.Forms;
 
 namespace CommonForms
 {
+    // Returns DialogResult.OK, if changed data
     public partial class CustomerInfoForm : Form
     {
         private Customer customer;
         private MyBank bank;
         private bool isInputChanged;
+        private bool isDirty;
 
         public CustomerInfoForm(Customer customer, MyBank bank)
         {
@@ -25,6 +27,7 @@ namespace CommonForms
 
             Fill();
             isInputChanged = false;
+            isDirty = false;
             saveButton.Enabled = false;
         }
 
@@ -58,6 +61,7 @@ namespace CommonForms
                         birthDateTimePicker.Value
                     )
                 );
+                isDirty = true;
             }
             catch (InputException e)
             {
@@ -82,6 +86,11 @@ namespace CommonForms
 
         private void CustomerInfoForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (isDirty)
+            {
+                DialogResult = DialogResult.OK;
+            }
+
             if (isInputChanged)
             {
                 var res = MessageBox.Show(

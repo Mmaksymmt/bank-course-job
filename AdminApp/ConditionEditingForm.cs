@@ -12,11 +12,12 @@ using System.Windows.Forms;
 
 namespace AdminApp
 {
+    // Returns DialogResult.OK, if changed data
     public partial class ConditionEditingForm : Form
     {
         private DepositCondition condition;
-        private bool isCreating;
         private MyBank bank;
+        private bool isCreating;
 
         public ConditionEditingForm(
             MyBank bank,
@@ -64,6 +65,7 @@ namespace AdminApp
             {
                 bank.DepositConditions.Add(condition);
             }
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

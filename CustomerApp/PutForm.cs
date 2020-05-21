@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace CustomerApp
 {
+    // Returns DialogResult.OK, if operation occured
     public partial class PutForm : Form
     {
         private Deposit deposit;
@@ -29,6 +30,7 @@ namespace CustomerApp
         private void OkButton_Click(object sender, EventArgs e)
         {
             deposit.Value += valueUpDown.Value;
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace CustomerApp
 {
+    // Returns DialogResult.OK, if operation occured
     public partial class WithdrawForm : Form
     {
         private Deposit deposit;
@@ -23,14 +24,15 @@ namespace CustomerApp
             valueUpDown.Value = deposit.Value;
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void okButton_Click(object sender, EventArgs e)
+        private void OkButton_Click(object sender, EventArgs e)
         {
             deposit.Value -= valueUpDown.Value;
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

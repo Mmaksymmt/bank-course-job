@@ -12,11 +12,12 @@ using System.Windows.Forms;
 
 namespace AdminApp
 {
+    // Returns DialogResult.OK, is changed data
     public partial class DepositEditingForm : Form
     {
-        private Customer customer;
         private Deposit deposit;
         private bool isInputChanged;
+        private bool isDirty;
 
         public DepositEditingForm(Customer customer, Deposit depos)
         {
@@ -31,6 +32,7 @@ namespace AdminApp
 
             saveButton.Enabled = false;
             isInputChanged = false;
+            isDirty = false;
         }
 
         // Saves new data, returns true if changed
@@ -53,6 +55,7 @@ namespace AdminApp
                     deposit.StartDate,
                     newFinishDate
                 );
+                isDirty = true;
             }
             catch (InputException e)
             {
@@ -75,6 +78,11 @@ namespace AdminApp
 
         private void DepositEditingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (isDirty)
+            {
+                DialogResult = DialogResult.OK;
+            }
+
             if (isInputChanged)
             {
                 var res = MessageBox.Show(

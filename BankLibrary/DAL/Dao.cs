@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Bank.DAL
 {
+    // Data object model, serializes/deserializes bank data
     class Dao
     {
         private readonly MyBank bank;

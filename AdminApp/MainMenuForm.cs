@@ -134,8 +134,11 @@ namespace AdminApp
             if (selectedCustomer != null)
             {
                 var customerInfoForm = new CustomerInfoFormAdmin(selectedCustomer, bank);
-                customerInfoForm.ShowDialog();
-                isDirty = true;
+                DialogResult res = customerInfoForm.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    isDirty = true;
+                }
                 CustomersBindingSource.ResetBindings(false);
             }
         }
@@ -150,8 +153,11 @@ namespace AdminApp
                     usersGridView.SelectedRows[0].DataBoundItem as Customer,
                     selectedDeposit
                 );
-                depositEditingForm.ShowDialog();
-                isDirty = true;
+                DialogResult res = depositEditingForm.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    isDirty = true;
+                }
                 DepositsBindingSource.ResetBindings(false);
             }
         }
@@ -183,8 +189,11 @@ namespace AdminApp
         private void AvailableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var conditionsForm = new DepositConditionsForm(bank);
-            conditionsForm.Show();
-            isDirty = true;
+            DialogResult res = conditionsForm.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                isDirty = true;
+            }
         }
 
         private void CreateDeposToolStripMenuItem_Click(object sender, EventArgs e)
@@ -196,8 +205,11 @@ namespace AdminApp
             }
 
             var createDepositForm = new DepositAddingForm(bank, customer);
-            createDepositForm.ShowDialog();
-            isDirty = true;
+            DialogResult res = createDepositForm.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                isDirty = true;
+            }
             DepositsBindingSource.ResetBindings(false);
         }
 
